@@ -3,139 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E Galang Realty - Official Sales Tracking Portal</title>
-    
+    <title>E Galang Realty - Sales Tracking System</title>
     <style>
         :root {
-            --primary: #1e3a1e; /* Deep green matching the roof */
-            --primary-hover: #142814;
-            --accent: #c0392b; /* Burgundy red matching the roof */
-            --accent-hover: #a02e23;
-            --text-main: #2c3e50;
-            --text-muted: #6c757d;
-            --bg-overlay: rgba(244, 246, 248, 0.88);
-            --card-bg: rgba(255, 255, 255, 0.94);
+            --primary-green: #0a5c36;
+            --secondary-green: #14804a;
+            --accent-red: #c0392b;
+            --bg-light: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #7f8c8d;
             --border-color: #e2e8f0;
         }
 
         body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text);
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background-color: #f4f6f8;
-    
-    /* Full-screen background image code */
-    background-image: linear-gradient(rgba(244, 246, 248, 0.85), rgba(244, 246, 248, 0.85)), url('logo.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: contain;
-}
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--bg-light);
+            background-image: linear-gradient(rgba(244, 246, 248, 0.88), rgba(244, 246, 248, 0.88)), url('logo.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: contain;
+        }
 
-        /* Header Navigation */
-        .header-nav {
-            background-color: var(--primary);
-            color: #ffffff;
-            padding: 16px 32px;
+        header {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        nav {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            justify-content: center;
+            background-color: var(--secondary-green);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        .brand-title {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .brand-title span {
-            color: #e74c3c;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 12px;
-        }
-
-        .tab-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #e2e8f0;
-            padding: 10px 20px;
-            font-size: 14px;
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
             font-weight: 600;
-            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            transition: background 0.2s;
         }
 
-        .tab-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+        nav button:hover, nav button.active {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
-        .tab-btn.active {
-            background-color: var(--accent);
-            color: #ffffff;
-            border-color: var(--accent);
-            box-shadow: 0 2px 8px rgba(192, 57, 43, 0.4);
-        }
-
-        /* Container Layout */
-        .main-container {
+        .container {
             max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 20px;
-            flex: 1;
-            width: 100%;
-            box-sizing: border-box;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        /* Glassmorphism Cards */
-        .content-card {
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
             background: var(--card-bg);
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-            margin-bottom: 30px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
         }
 
-        .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 22px;
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary-green);
             border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding-bottom: 0.5rem;
         }
 
-        /* Form Grid */
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .full-width {
-            grid-column: span 2;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
         }
 
         .form-group {
@@ -143,256 +112,186 @@
             flex-direction: column;
         }
 
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
         label {
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #34495e;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        select, input {
-            padding: 13px 15px;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-            transition: all 0.2s ease;
-            background-color: #ffffff;
-            color: var(--text-main);
-        }
-
-        select:focus, input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(30, 58, 30, 0.15);
-        }
-
-        input[readonly] {
-            background-color: #f1f5f9;
-            color: #475569;
             font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
         }
 
-        .btn-submit {
-            background-color: var(--primary);
-            color: #ffffff;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.1s ease;
-            box-shadow: 0 4px 12px rgba(30, 58, 30, 0.25);
-        }
-
-        .btn-submit:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        /* Metrics Display Cards */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .metric-card {
-            background: var(--card-bg);
-            border-left: 6px solid var(--accent);
-            padding: 22px;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            backdrop-filter: blur(6px);
-        }
-
-        .metric-title {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-
-        .metric-value {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-top: 8px;
-        }
-
-        /* Custom Table Styling */
-        .table-responsive {
-            overflow-x: auto;
-            margin-top: 15px;
-            border-radius: 8px;
+        input, select {
+            padding: 0.75rem;
             border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 2px rgba(10, 92, 54, 0.1);
+        }
+
+        .btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-green);
+        }
+
+        .btn-danger {
+            background-color: var(--accent-red);
+        }
+
+        .btn-danger:hover {
+            background-color: #a93226;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            margin-right: 0.3rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: #ffffff;
+            margin-top: 1rem;
+        }
+
+        th, td {
             text-align: left;
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
         }
 
         th {
-            background-color: #f8fafc;
-            color: var(--primary);
-            padding: 14px 18px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--border-color);
+            background-color: var(--primary-green);
+            color: white;
         }
 
-        td {
-            padding: 14px 18px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 14px;
-            color: #334155;
+        tr:hover {
+            background-color: rgba(0,0,0,0.02);
         }
 
-        tr:last-child td {
-            border-bottom: none;
+        .metric-badge {
+            display: inline-block;
+            background: rgba(10, 92, 54, 0.1);
+            color: var(--primary-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
         }
 
-        tr:hover td {
-            background-color: #f1f5f9;
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
 
-        /* Security Prompt Card */
-        .auth-card {
-            max-width: 460px;
-            margin: 60px auto;
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        footer {
             text-align: center;
-        }
-
-        .auth-card input {
-            text-align: center;
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        /* Tagline Footer */
-        .tagline-footer {
-            text-align: center;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            margin: 40px 0 25px 0;
-            font-size: 13px;
-            text-transform: uppercase;
-            opacity: 0.9;
-        }
-
-        .badge-fixed {
-            background: #dcfce7;
-            color: #166534;
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: 700;
-            margin-left: 6px;
-        }
-
-        /* Page Display Visibility */
-        .page-view {
-            display: block;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        @media (max-width: 768px) {
-            .header-nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 16px;
-            }
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .full-width {
-                grid-column: span 1;
-            }
-            .nav-tabs {
-                width: 100%;
-                justify-content: center;
-            }
-            .tab-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
         }
     </style>
 </head>
 <body>
 
-    <header class="header-nav">
-        <div class="brand-title">E GALANG <span>REALTY</span></div>
-        <nav class="nav-tabs">
-            <button class="tab-btn active" id="tab-mainPortal" onclick="switchTab('mainPortal')">
-                📝 Sales Entry
-            </button>
-            <button class="tab-btn" id="tab-agentPortal" onclick="switchTab('agentPortal')">
-                👤 Agent Portal
-            </button>
-            <button class="tab-btn" id="tab-egrMtdPortal" onclick="switchTab('egrMtdPortal')">
-                🔒 EGR MTD Dashboard
-            </button>
-        </nav>
+    <header>
+        <h1>E GALANG REALTY</h1>
+        <p>WE HELP YOU TO FIND THE BEST INVESTMENT AND HOME FOR YOU</p>
     </header>
 
-    <div class="main-container">
+    <nav>
+        <button class="nav-btn active" onclick="switchTab('entry')">Sales Entry Lobby</button>
+        <button class="nav-btn" onclick="switchTab('agent')">Sales Agent Portal</button>
+        <button class="nav-btn" onclick="switchTab('mtd')">EGR MTD Dashboard</button>
+    </nav>
 
-        <!-- SECTION 1: MAIN ENTRY LOBBY (CONFIDENTIAL - NO TOTALS) -->
-        <div id="mainPortal" class="page-view">
-            <div class="content-card">
-                <div class="section-title">
-                    <span>Record Official Transaction</span>
-                    <span style="font-size: 12px; font-weight: 500; color: var(--text-muted);">Confidential Portal</span>
-                </div>
-                <form id="officialSalesForm">
+    <div class="container">
+        <!-- 1. ENTRY LOBBY -->
+        <div id="entry" class="tab-content active">
+            <div class="card">
+                <h2>Record New Sale</h2>
+                <form id="salesForm" onsubmit="handleNewSale(event)">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="agentSelect">Agent Name</label>
-                            <select id="agentSelect" required>
-                                <option value="">-- Select Agent --</option>
-                                <option value="Bernardo Plaza">Bernardo Plaza</option>
-                                <option value="Ruthie Saavedra">Ruthie Saavedra</option>
-                                <option value="Efren Galang">Efren Galang</option>
-                                <option value="Maricar Guemo">Maricar Guemo</option>
-                                <option value="Cheers Gonzales">Cheers Gonzales</option>
-                                <option value="Joycebeth Mitra">Joycebeth Mitra</option>
-                                <option value="Vivian Ocampo">Vivian Ocampo</option>
-                                <option value="Charles Garcia">Charles Garcia</option>
-                                <option value="Jayson Ravago">Jayson Ravago</option>
+                            <label>Agent Name</label>
+                            <select id="entryAgent" required>
+                                <option value="">Select Agent</option>
+                                <option value="Agent 1">Agent 1</option>
+                                <option value="Agent 2">Agent 2</option>
+                                <option value="Agent 3">Agent 3</option>
+                                <option value="Agent 4">Agent 4</option>
+                                <option value="Agent 5">Agent 5</option>
+                                <option value="Agent 6">Agent 6</option>
+                                <option value="Agent 7">Agent 7</option>
+                                <option value="Agent 8">Agent 8</option>
+                                <option value="Agent 9">Agent 9</option>
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <label for="dateInput">Date Reserved</label>
-                            <input type="date" id="dateInput" required>
+                            <label>Reservation Date</label>
+                            <input type="date" id="entryDate" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="clientInput">Client Name</label>
-                            <input type="text" id="clientInput" placeholder="Enter Full Client Name" required>
+                            <label>Primary Client Name</label>
+                            <input type="text" id="entryClient" placeholder="e.g., Juan Cruz" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="projectSelect">Developer / Project Name</label>
-                            <select id="projectSelect" required onchange="handleProjectAutoFill()">
-                                <option value="">-- Select Project --</option>
-                                <option value="Pagsikat Place">Pagsikat Place (Fixed: ₱1,300,000)</option>
-                                <option value="Pagsibol Village">Pagsibol Village (Fixed: ₱1,900,000)</option>
+                            <label>People Included (Co-Buyers / Spouse)</label>
+                            <input type="text" id="entryPeople" placeholder="e.g., Maria Cruz (Spouse)">
+                        </div>
+                        <div class="form-group">
+                            <label>Project / Developer</label>
+                            <select id="entryProject" onchange="handleProjectPriceChange('entryProject', 'entryTcp')" required>
+                                <option value="">Select Project</option>
+                                <option value="Pagsikat Place">Pagsikat Place (Fixed ₱1.3M)</option>
+                                <option value="Pagsibol Village">Pagsibol Village (Fixed ₱1.9M)</option>
                                 <option value="Xevera Mabalacat">Xevera Mabalacat</option>
                                 <option value="Highview Haciendas">Highview Haciendas</option>
                                 <option value="Ravenna Homes">Ravenna Homes</option>
@@ -406,373 +305,357 @@
                                 <option value="Kaya Terraces">Kaya Terraces</option>
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <label for="unitInput">Unit / Block / Lot Details</label>
-                            <input type="text" id="unitInput" placeholder="e.g., Block 5 Lot 12" required>
+                            <label>Unit / Block / Lot</label>
+                            <input type="text" id="entryUnit" placeholder="e.g., Blk 4 Lot 12" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="tcpInput">Total Contract Price (TCP)</label>
-                            <input type="number" id="tcpInput" placeholder="Enter TCP amount" step="0.01" required>
+                            <label>Total Contract Price (TCP)</label>
+                            <input type="number" id="entryTcp" placeholder="₱ Amount" required>
                         </div>
-
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn-submit">Submit Official Transaction</button>
-                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem; text-align: right;">
+                        <button type="submit" class="btn">Submit Transaction</button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- SECTION 2: AGENT PERSONAL PORTAL -->
-        <div id="agentPortal" class="page-view hidden">
-            <div class="content-card">
-                <div class="section-title">Agent Personal Sales Portal</div>
-                <div class="form-group" style="max-width: 420px; margin-bottom: 25px;">
-                    <label for="filterAgentSelect">Select Agent Name to View Records</label>
-                    <select id="filterAgentSelect" onchange="loadAgentPersonalSales()">
-                        <option value="">-- Select Agent --</option>
-                        <option value="Bernardo Plaza">Bernardo Plaza</option>
-                        <option value="Ruthie Saavedra">Ruthie Saavedra</option>
-                        <option value="Efren Galang">Efren Galang</option>
-                        <option value="Maricar Guemo">Maricar Guemo</option>
-                        <option value="Cheers Gonzales">Cheers Gonzales</option>
-                        <option value="Joycebeth Mitra">Joycebeth Mitra</option>
-                        <option value="Vivian Ocampo">Vivian Ocampo</option>
-                        <option value="Charles Garcia">Charles Garcia</option>
-                        <option value="Jayson Ravago">Jayson Ravago</option>
+        <!-- 2. AGENT PORTAL -->
+        <div id="agent" class="tab-content">
+            <div class="card">
+                <h2>Agent Personal Sales Portal</h2>
+                <div class="form-group" style="max-width: 300px; margin-bottom: 1.5rem;">
+                    <label>Select Agent Name</label>
+                    <select id="portalAgentSelect" onchange="renderAgentPortal()">
+                        <option value="">-- Choose Name --</option>
+                        <option value="Agent 1">Agent 1</option>
+                        <option value="Agent 2">Agent 2</option>
+                        <option value="Agent 3">Agent 3</option>
+                        <option value="Agent 4">Agent 4</option>
+                        <option value="Agent 5">Agent 5</option>
+                        <option value="Agent 6">Agent 6</option>
+                        <option value="Agent 7">Agent 7</option>
+                        <option value="Agent 8">Agent 8</option>
+                        <option value="Agent 9">Agent 9</option>
                     </select>
                 </div>
 
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-title">Personal Recorded Total Sales</div>
-                        <div class="metric-value" id="agentPersonalTotal">₱0.00</div>
+                <div id="agentPortalContent" style="display: none;">
+                    <div class="metric-badge" id="agentTotalSalesDisplay">Total Sales: ₱0.00</div>
+                    
+                    <h3>Your Transaction Records</h3>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date Reserved</th>
+                                    <th>Client Name</th>
+                                    <th>People Included</th>
+                                    <th>Project</th>
+                                    <th>Unit Details</th>
+                                    <th>TCP</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="agentSalesTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="section-title" style="margin-top: 30px;">Personal Sales Transaction History</div>
-                <div class="table-responsive">
+        <!-- 3. MTD DASHBOARD (CONFIDENTIAL) -->
+        <div id="mtd" class="tab-content">
+            <div class="card" id="mtdLockScreen">
+                <h2>Executive Area Locked</h2>
+                <p>Please enter the administrative password to access confidential MTD analytics.</p>
+                <div class="form-group" style="max-width: 300px;">
+                    <input type="password" id="mtdPasswordInput" placeholder="Enter Password">
+                </div>
+                <button class="btn" style="margin-top: 1rem;" onclick="unlockMtd()">Unlock Dashboard</button>
+            </div>
+
+            <div id="mtdDashboardContent" style="display: none;">
+                <div class="card">
+                    <h2>EGR Month-To-Date Executive Dashboard</h2>
+                    <div class="metric-badge" id="grandTotalDisplay">EGR Grand Total Sales: ₱0.00</div>
+                    
+                    <h3>Agent Performance Standings</h3>
                     <table>
                         <thead>
                             <tr>
-                                <th>Date Reserved</th>
-                                <th>Client Name</th>
-                                <th>Project / Developer</th>
-                                <th>Unit Details</th>
-                                <th>Total Contract Price (TCP)</th>
+                                <th>Rank</th>
+                                <th>Agent Name</th>
+                                <th>Total Sales Volume</th>
                             </tr>
                         </thead>
-                        <tbody id="agentPersonalTableBody">
-                            <tr>
-                                <td colspan="5" style="text-align: center; color: var(--text-muted);">Please select an agent to load sales history.</td>
-                            </tr>
+                        <tbody id="leaderboardBody">
+                            <!-- Populated dynamically -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
-        <!-- SECTION 3: EGR MTD DASHBOARD (PASSWORD PROTECTED) -->
-        <div id="egrMtdPortal" class="page-view hidden">
-            
-            <!-- Password Lock View -->
-            <div id="authLockView" class="content-card auth-card">
-                <div class="section-title" style="justify-content: center;">🔒 Admin Verification Required</div>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
-                    Enter the management security PIN/Password to access the company grand totals and sales standings.
-                </p>
-                <form id="authForm" onsubmit="verifyPassword(event)">
-                    <div class="form-group">
-                        <input type="password" id="adminPasswordInput" placeholder="Enter Password" required>
-                    </div>
-                    <button type="submit" class="btn-submit">Access Dashboard</button>
-                </form>
-            </div>
-
-            <!-- Protected Dashboard Content View -->
-            <div id="authDashboardView" class="hidden">
-                <div class="metrics-grid">
-                    <div class="metric-card" style="border-left-color: var(--primary);">
-                        <div class="metric-title">EGR Company Grand Total Sales</div>
-                        <div class="metric-value" id="egrMtdTotalDisplay">₱117,663,802.00</div>
-                    </div>
-                </div>
-
-                <div class="content-card">
-                    <div class="section-title">Confidential Agent Performance Standings</div>
-                    <div class="table-responsive">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>Agent Name</th>
-                                    <th>Accumulated Total Sales</th>
-                                </tr>
-                            </thead>
-                            <tbody id="leaderboardTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="content-card">
-                    <div class="section-title">Company Master Transaction Log</div>
-                    <div class="table-responsive">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date Reserved</th>
-                                    <th>Agent Name</th>
-                                    <th>Client Name</th>
-                                    <th>Project / Developer</th>
-                                    <th>Unit Details</th>
-                                    <th>Total Contract Price</th>
-                                </tr>
-                            </thead>
-                            <tbody id="masterLogTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="tagline-footer">
-            WE HELP YOU TO FIND THE BEST INVESTMENT AND HOME FOR YOU
-        </div>
-
     </div>
 
-<script>
-    // Initial Seed Data mapping historical log records
-    const transactionLog = [
-        { date: "2026-01-24", agent: "Maricar Guemo", client: "Nichole Opinga", project: "Pagsibol Village", unit: "Phase 1", tcp: 1750000 },
-        { date: "2026-01-24", agent: "Maricar Guemo", client: "Jhonson Caindoy", project: "Pagsikat Place", unit: "Phase 2", tcp: 1250000 },
-        { date: "2026-01-24", agent: "Efren Galang", client: "Jerzel Sison", project: "Pagsikat Place", unit: "Phase 1", tcp: 1250000 },
-        { date: "2026-01-27", agent: "Ruthie Saavedra", client: "Arjay Alpuerto", project: "Pagsibol Village", unit: "Phase 2", tcp: 1750000 },
-        { date: "2026-02-01", agent: "Ruthie Saavedra", client: "Sean Nicole Capeña", project: "Highview Haciendas", unit: "Block 4 Lot 10", tcp: 1795000 },
-        { date: "2026-02-01", agent: "Ruthie Saavedra", client: "Charles Steven Perreras", project: "Ravenna Homes", unit: "Block 2 Lot 8", tcp: 2649075 },
-        { date: "2026-02-01", agent: "Ruthie Saavedra", client: "Wilfredo Gimeno", project: "Highview Haciendas", unit: "Block 1 Lot 5", tcp: 1050000 },
-        { date: "2026-02-01", agent: "Ruthie Saavedra", client: "Arlene???", project: "Pagsikat Place", unit: "Phase 1", tcp: 1280000 },
-        { date: "2026-02-01", agent: "Ruthie Saavedra", client: "Betina Bien Gomez", project: "Ravenna Homes", unit: "Block 5 Lot 2", tcp: 1926600 },
-        { date: "2026-02-01", agent: "Ruthie Saavedra", client: "Betina Bien Gomez", project: "Ravenna Homes", unit: "Block 5 Lot 3", tcp: 1926600 },
-        { date: "2026-02-01", agent: "Maricar Guemo", client: "Richard Grones", project: "Pagsikat Place", unit: "Phase 2", tcp: 1250000 },
-        { date: "2026-02-01", agent: "Maricar Guemo", client: "Celina Ellaine Datu", project: "Pagsikat Place", unit: "Phase 2", tcp: 1250000 },
-        { date: "2026-02-10", agent: "Maricar Guemo", client: "Crystalyn Gapuzan", project: "Ravenna Homes", unit: "Block 3 Lot 12", tcp: 1926600 },
-        { date: "2026-02-10", agent: "Maricar Guemo", client: "Jeraldyn Montano", project: "Ravenna Homes", unit: "Block 3 Lot 14", tcp: 1926600 },
-        { date: "2026-02-13", agent: "Bernardo Plaza", client: "Roxanne Lozano", project: "Xevera Mabalacat", unit: "TH Royale", tcp: 2404600 },
-        { date: "2026-02-16", agent: "Joycebeth Mitra", client: "Mark Vincent E. Gaboy", project: "Xevera Mabalacat", unit: "Semi Royale", tcp: 2359000 },
-        { date: "2026-02-21", agent: "Maricar Guemo", client: "Rein Dalungan", project: "Ravenna Homes", unit: "Block 6 Lot 9", tcp: 2091600 },
-        { date: "2026-02-23", agent: "Efren Galang", client: "Arissa Caronan", project: "Pagsikat Place", unit: "Phase 1", tcp: 1250000 },
-        { date: "2026-03-14", agent: "Bernardo Plaza", client: "Ericka Marie Ortiz Dayrit", project: "Ravenna Homes", unit: "Block 8 Lot 4", tcp: 2649075 },
-        { date: "2026-03-16", agent: "Cheers Gonzales", client: "Charles James Perlas", project: "Ravenna Homes", unit: "Block 8 Lot 6", tcp: 2649075 },
-        { date: "2026-03-17", agent: "Joycebeth Mitra", client: "Alexis Prencillo", project: "Pagsikat Place", unit: "Phase 1", tcp: 1250000 },
-        { date: "2026-03-25", agent: "Cheers Gonzales", client: "Luis Abacan", project: "Pagsikat Place", unit: "Phase 2", tcp: 1250000 },
-        { date: "2026-03-25", agent: "Maricar Guemo", client: "Mariel Limin", project: "Pagsikat Place", unit: "Phase 2", tcp: 1250000 },
-        { date: "2026-04-01", agent: "Bernardo Plaza", client: "Lyka Plaza", project: "Ravenna Homes", unit: "Block 10 Lot 1", tcp: 1626000 },
-        { date: "2026-04-14", agent: "Charles Garcia", client: "Ramzi Benolirao", project: "Fiesta Prime", unit: "Block 2 Lot 11", tcp: 3982000 },
-        { date: "2026-04-26", agent: "Cheers Gonzales", client: "Jean Gray Rivera", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-04-26", agent: "Maricar Guemo", client: "Shiela Ong", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-04-26", agent: "Maricar Guemo", client: "Jeffrey Quinto", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-04-26", agent: "Efren Galang", client: "John Carlo Ombao", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-05-13", agent: "Maricar Guemo", client: "Lester G. Garcia", project: "Pagsibol Village", unit: "Phase 1", tcp: 1750000 },
-        { date: "2026-05-19", agent: "Efren Galang", client: "Daniel Teneclan", project: "Xevera Mabalacat", unit: "TH SR", tcp: 2349000 },
-        { date: "2026-05-24", agent: "Bernardo Plaza", client: "Jennifer Roques", project: "Xevera Mabalacat", unit: "TH A", tcp: 2499000 },
-        { date: "2026-06-03", agent: "Vivian Ocampo", client: "Jeanne Martinez", project: "Highview Haciendas", unit: "Block 7 Lot 3", tcp: 2080000 },
-        { date: "2026-06-06", agent: "Efren Galang", client: "Roxanne Villegas", project: "Pagsikat Place", unit: "Phase 2", tcp: 1300000 },
-        { date: "2026-06-26", agent: "Maricar Guemo", client: "Jhon Paul Majait", project: "Pasinaya Homes", unit: "Block 12 Lot 4", tcp: 950000 },
-        { date: "2026-06-26", agent: "Maricar Guemo", client: "Mar Cadilo Abletes", project: "Pasinaya Homes", unit: "Block 12 Lot 5", tcp: 950000 },
-        { date: "2026-06-27", agent: "Ruthie Saavedra", client: "Ernesto Ledesma", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-06-30", agent: "Jayson Ravago", client: "Nestor L. De Ocampo", project: "Xevera Mabalacat", unit: "TH SR", tcp: 2359000 },
-        { date: "2026-07-08", agent: "Maricar Guemo", client: "Michael Mabale", project: "Pasinaya Homes", unit: "Block 15 Lot 1", tcp: 800000 },
-        { date: "2026-07-11", agent: "Cheers Gonzales", client: "Gerardo Jonieca", project: "Ravenna Homes", unit: "Block 4 Lot 10", tcp: 1926000 },
-        { date: "2026-07-11", agent: "Cheers Gonzales", client: "Gerardo Jonieca", project: "Ravenna Homes", unit: "Block 4 Lot 11", tcp: 1926000 },
-        { date: "2026-07-18", agent: "Bernardo Plaza", client: "Julie Ann E. Antonio", project: "Kaya Homes", unit: "Block 1 Lot 2", tcp: 950000 },
-        { date: "2026-07-18", agent: "Bernardo Plaza", client: "Kathleen Joy E. Antonio", project: "Kaya Homes", unit: "Block 1 Lot 3", tcp: 950000 },
-        { date: "2026-07-18", agent: "Vivian Ocampo", client: "Michaela Dan S. Caoc", project: "Ravenna Homes", unit: "Block 9 Lot 2", tcp: 1926000 },
-        { date: "2026-07-18", agent: "Cheers Gonzales", client: "Kurt Salamat", project: "Pagsikat Place", unit: "Phase 2", tcp: 1300000 },
-        { date: "2026-07-18", agent: "Cheers Gonzales", client: "Agnes Carreon", project: "Pagsikat Place", unit: "Phase 2", tcp: 1300000 },
-        { date: "2026-07-24", agent: "Jayson Ravago", client: "Trisha Nicole B. Payumo", project: "Sameera Angeles", unit: "TH SR P", tcp: 2499000 },
-        { date: "2026-07-25", agent: "Efren Galang", client: "Boyd James Saja", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-07-27", agent: "Maricar Guemo", client: "Melvin Gozum Dela Cruz", project: "Pasinaya Homes", unit: "Block 18 Lot 2", tcp: 800000 },
-        { date: "2026-07-27", agent: "Maricar Guemo", client: "Limuel Tinio Gozum", project: "Pasinaya Homes", unit: "Block 18 Lot 3", tcp: 800000 },
-        { date: "2026-08-08", agent: "Efren Galang", client: "Mary Anne Laure Alagos", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-08-08", agent: "Ruthie Saavedra", client: "Joel Maniti", project: "Pagsikat Place", unit: "Phase 2", tcp: 1300000 },
-        { date: "2026-08-13", agent: "Efren Galang", client: "Jeralyn Edaño", project: "Pagsikat Place", unit: "Phase 2", tcp: 1300000 },
-        { date: "2026-08-23", agent: "Vivian Ocampo", client: "Jasmin Contreras Milagrosa", project: "Claremont", unit: "Filinvest Lot 4", tcp: 4547100 },
-        { date: "2026-08-28", agent: "Maricar Guemo", client: "Lowie Miguel Baniel", project: "Pasinaya Homes", unit: "Block 20 Lot 1", tcp: 950000 },
-        { date: "2026-08-28", agent: "Maricar Guemo", client: "Mariejo Mendeja Canada", project: "Pasinaya Homes", unit: "Block 20 Lot 2", tcp: 800000 },
-        { date: "2026-08-28", agent: "Maricar Guemo", client: "Dennis Calma Francisco", project: "Pasinaya Homes", unit: "Block 20 Lot 3", tcp: 950000 },
-        { date: "2026-08-28", agent: "Efren Galang", client: "Audie Aguilar", project: "Pasinaya Homes", unit: "Block 21 Lot 5", tcp: 900000 },
-        { date: "2026-08-28", agent: "Joycebeth Mitra", client: "Arwin David", project: "Pasinaya Homes", unit: "Block 21 Lot 6", tcp: 900000 },
-        { date: "2026-08-29", agent: "Maricar Guemo", client: "Wilhelm Corminal", project: "Pagsikat Place", unit: "Phase 1", tcp: 1300000 },
-        { date: "2026-09-04", agent: "Ruthie Saavedra", client: "Arian Kristelle Santos Calma", project: "Claremont", unit: "Filinvest Lot 9", tcp: 4894600 },
-        { date: "2026-09-04", agent: "Cheers Gonzales", client: "Michael Escaño", project: "Pasinaya Homes", unit: "Block 22 Lot 1", tcp: 950000 },
-        { date: "2026-09-06", agent: "Ruthie Saavedra", client: "Renalyn Tan", project: "Pagsikat Place", unit: "Phase 2", tcp: 1310000 },
-        { date: "2026-09-07", agent: "Vivian Ocampo", client: "Khimier Blance Manalo", project: "Hamana Homes", unit: "Block 3 Lot 8", tcp: 5960877 },
-        { date: "2026-09-09", agent: "Ruthie Saavedra", client: "Camille Dela Cruz", project: "Fiesta Communities", unit: "KT Phase 1", tcp: 2514250 },
-        { date: "2026-09-12", agent: "Maricar Guemo", client: "Marvin Luzong Cuevas", project: "Pasinaya Homes", unit: "Block 25 Lot 1", tcp: 800000 },
-        { date: "2026-09-12", agent: "Maricar Guemo", client: "Kevin Luzong Cuevas", project: "Pasinaya Homes", unit: "Block 25 Lot 2", tcp: 800000 },
-        { date: "2026-09-12", agent: "Maricar Guemo", client: "Charlene Luzong Cuevas", project: "Pasinaya Homes", unit: "Block 25 Lot 3", tcp: 800000 }
-    ];
+    <!-- EDIT TRANSACTION MODAL -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2 style="color: var(--primary-green); margin-top:0;">Edit Transaction Record</h2>
+            <input type="hidden" id="editSaleId">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Agent Name</label>
+                    <select id="editAgent" required>
+                        <option value="Agent 1">Agent 1</option>
+                        <option value="Agent 2">Agent 2</option>
+                        <option value="Agent 3">Agent 3</option>
+                        <option value="Agent 4">Agent 4</option>
+                        <option value="Agent 5">Agent 5</option>
+                        <option value="Agent 6">Agent 6</option>
+                        <option value="Agent 7">Agent 7</option>
+                        <option value="Agent 8">Agent 8</option>
+                        <option value="Agent 9">Agent 9</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Reservation Date</label>
+                    <input type="date" id="editDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Primary Client Name</label>
+                    <input type="text" id="editClient" required>
+                </div>
+                <div class="form-group">
+                    <label>People Included (Co-Buyers)</label>
+                    <input type="text" id="editPeople">
+                </div>
+                <div class="form-group">
+                    <label>Project / Developer</label>
+                    <select id="editProject" onchange="handleProjectPriceChange('editProject', 'editTcp')" required>
+                        <option value="Pagsikat Place">Pagsikat Place</option>
+                        <option value="Pagsibol Village">Pagsibol Village</option>
+                        <option value="Xevera Mabalacat">Xevera Mabalacat</option>
+                        <option value="Highview Haciendas">Highview Haciendas</option>
+                        <option value="Ravenna Homes">Ravenna Homes</option>
+                        <option value="Pasinaya Homes">Pasinaya Homes</option>
+                        <option value="Fiesta Prime">Fiesta Prime</option>
+                        <option value="Sameera Angeles">Sameera Angeles</option>
+                        <option value="Hamana Homes">Hamana Homes</option>
+                        <option value="Claremont">Claremont</option>
+                        <option value="Fiesta Communities">Fiesta Communities</option>
+                        <option value="Kaya Homes">Kaya Homes</option>
+                        <option value="Kaya Terraces">Kaya Terraces</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Unit / Block / Lot</label>
+                    <input type="text" id="editUnit" required>
+                </div>
+                <div class="form-group">
+                    <label>Total Contract Price (TCP)</label>
+                    <input type="number" id="editTcp" required>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-danger" onclick="closeEditModal()">Cancel</button>
+                <button class="btn" onclick="saveSaleEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
 
-    let isDashboardUnlocked = false;
+    <footer>
+        E GALANG REALTY &copy; 2026 | Confidential Internal Sales Tracker
+    </footer>
 
-    const fixedPrices = {
-        "Pagsikat Place": 1300000,
-        "Pagsibol Village": 1900000
-    };
+    <script>
+        // Store sales data in browser memory
+        let salesData = [
+            { id: 1, agent: "Agent 1", date: "2026-09-01", client: "Juan Dela Cruz", people: "Maria Dela Cruz", project: "Pagsikat Place", unit: "Blk 1 Lot 5", tcp: 1300000 },
+            { id: 2, agent: "Agent 2", date: "2026-09-05", client: "Pedro Penduko", people: "None", project: "Pagsibol Village", unit: "Blk 3 Lot 10", tcp: 1900000 },
+            { id: 3, agent: "Agent 1", date: "2026-09-10", client: "Ana Santos", people: "Mark Santos (Spouse)", project: "Xevera Mabalacat", unit: "Blk 12 Lot 2", tcp: 2500000 }
+        ];
 
-    function formatCurrency(amount) {
-        return "₱" + parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-
-    function switchTab(viewId) {
-        document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
-        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-        
-        document.getElementById(viewId).classList.remove('hidden');
-        document.getElementById('tab-' + viewId).classList.add('active');
-
-        if (viewId === 'agentPortal') {
-            loadAgentPersonalSales();
-        } else if (viewId === 'egrMtdPortal' && isDashboardUnlocked) {
-            renderEgrDashboard();
-        }
-    }
-
-    function handleProjectAutoFill() {
-        const project = document.getElementById("projectSelect").value;
-        const tcpInput = document.getElementById("tcpInput");
-
-        if (fixedPrices[project]) {
-            tcpInput.value = fixedPrices[project];
-            tcpInput.readOnly = true;
-        } else {
-            tcpInput.value = "";
-            tcpInput.readOnly = false;
-        }
-    }
-
-    // Record Sale Handler
-    document.getElementById("officialSalesForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const agent = document.getElementById("agentSelect").value;
-        const date = document.getElementById("dateInput").value;
-        const client = document.getElementById("clientInput").value;
-        const project = document.getElementById("projectSelect").value;
-        const unit = document.getElementById("unitInput").value;
-        const tcp = parseFloat(document.getElementById("tcpInput").value);
-
-        if (!agent || !date || !client || !project || isNaN(tcp)) {
-            alert("Please complete all required fields correctly.");
-            return;
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
         }
 
-        // Store into transactions log
-        transactionLog.unshift({ date, agent, client, project, unit, tcp });
-
-        alert("Transaction recorded into official log successfully!");
-
-        // Reset form
-        document.getElementById("officialSalesForm").reset();
-        document.getElementById("tcpInput").readOnly = false;
-
-        // Auto refresh views if active
-        if (isDashboardUnlocked) renderEgrDashboard();
-    });
-
-    // Load Individual Agent Personal Sales
-    function loadAgentPersonalSales() {
-        const selectedAgent = document.getElementById("filterAgentSelect").value;
-        const tbody = document.getElementById("agentPersonalTableBody");
-        const totalDisplay = document.getElementById("agentPersonalTotal");
-
-        if (!selectedAgent) {
-            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Please select an agent to load sales history.</td></tr>';
-            totalDisplay.innerText = "₱0.00";
-            return;
+        function handleProjectPriceChange(projectSelectId, tcpInputId) {
+            const proj = document.getElementById(projectSelectId).value;
+            const tcpInput = document.getElementById(tcpInputId);
+            
+            if (proj === "Pagsikat Place") {
+                tcpInput.value = 1300000;
+                tcpInput.readOnly = true;
+            } else if (proj === "Pagsibol Village") {
+                tcpInput.value = 1900000;
+                tcpInput.readOnly = true;
+            } else {
+                tcpInput.readOnly = false;
+            }
         }
 
-        const agentSales = transactionLog.filter(item => item.agent === selectedAgent);
-        const personalSum = agentSales.reduce((acc, curr) => acc + curr.tcp, 0);
+        function handleNewSale(e) {
+            e.preventDefault();
+            const newSale = {
+                id: Date.now(),
+                agent: document.getElementById('entryAgent').value,
+                date: document.getElementById('entryDate').value,
+                client: document.getElementById('entryClient').value,
+                people: document.getElementById('entryPeople').value || "None",
+                project: document.getElementById('entryProject').value,
+                unit: document.getElementById('entryUnit').value,
+                tcp: parseFloat(document.getElementById('entryTcp').value)
+            };
 
-        totalDisplay.innerText = formatCurrency(personalSum);
-
-        if (agentSales.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No sales transactions recorded for this agent yet.</td></tr>';
-            return;
+            salesData.push(newSale);
+            alert("Sale recorded successfully!");
+            document.getElementById('salesForm').reset();
+            renderAgentPortal();
         }
 
-        tbody.innerHTML = agentSales.map(sale => `
-            <tr>
-                <td>${sale.date}</td>
-                <td><strong>${sale.client}</strong></td>
-                <td>${sale.project}</td>
-                <td>${sale.unit}</td>
-                <td><strong>${formatCurrency(sale.tcp)}</strong></td>
-            </tr>
-        `).join('');
-    }
+        function renderAgentPortal() {
+            const selectedAgent = document.getElementById('portalAgentSelect').value;
+            const portalContent = document.getElementById('agentPortalContent');
+            const tableBody = document.getElementById('agentSalesTableBody');
+            
+            if (!selectedAgent) {
+                portalContent.style.display = 'none';
+                return;
+            }
 
-    // Security Verification for EGR MTD Dashboard
-    function verifyPassword(e) {
-        e.preventDefault();
-        const inputPass = document.getElementById("adminPasswordInput").value;
-        
-        // Admin password default: egradmin
-        if (inputPass === "egradmin") {
-            isDashboardUnlocked = true;
-            document.getElementById("authLockView").classList.add("hidden");
-            document.getElementById("authDashboardView").classList.remove("hidden");
-            renderEgrDashboard();
-        } else {
-            alert("Incorrect password. Access denied.");
-            document.getElementById("adminPasswordInput").value = "";
+            portalContent.style.display = 'block';
+            tableBody.innerHTML = '';
+
+            const agentSales = salesData.filter(s => s.agent === selectedAgent);
+            const totalVolume = agentSales.reduce((sum, s) => sum + s.tcp, 0);
+
+            document.getElementById('agentTotalSalesDisplay').innerText = `Total Sales (${selectedAgent}): ₱${totalVolume.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+
+            if (agentSales.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No transaction records found for ${selectedAgent}.</td></tr>`;
+                return;
+            }
+
+            agentSales.forEach(sale => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${sale.date}</td>
+                    <td><strong>${sale.client}</strong></td>
+                    <td>${sale.people}</td>
+                    <td>${sale.project}</td>
+                    <td>${sale.unit}</td>
+                    <td>₱${sale.tcp.toLocaleString('en-US', {minimumFractionDigits: 2})}</td>
+                    <td>
+                        <button class="btn btn-sm" onclick="openEditModal(${sale.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteSale(${sale.id})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
         }
-    }
 
-    // Render Protected EGR Executive Dashboard
-    function renderEgrDashboard() {
-        const grandTotal = transactionLog.reduce((acc, curr) => acc + curr.tcp, 0);
-        document.getElementById("egrMtdTotalDisplay").innerText = formatCurrency(grandTotal);
+        function openEditModal(saleId) {
+            const sale = salesData.find(s => s.id === saleId);
+            if (!sale) return;
 
-        // Calculate Agent Leaderboard Standings
-        const agentSums = {};
-        transactionLog.forEach(item => {
-            agentSums[item.agent] = (agentSums[item.agent] || 0) + item.tcp;
-        });
+            document.getElementById('editSaleId').value = sale.id;
+            document.getElementById('editAgent').value = sale.agent;
+            document.getElementById('editDate').value = sale.date;
+            document.getElementById('editClient').value = sale.client;
+            document.getElementById('editPeople').value = sale.people;
+            document.getElementById('editProject').value = sale.project;
+            document.getElementById('editUnit').value = sale.unit;
+            document.getElementById('editTcp').value = sale.tcp;
 
-        const sortedAgents = Object.entries(agentSums).sort((a, b) => b[1] - a[1]);
+            handleProjectPriceChange('editProject', 'editTcp');
+            document.getElementById('editModal').style.display = 'flex';
+        }
 
-        const leaderboardBody = document.getElementById("leaderboardTableBody");
-        leaderboardBody.innerHTML = sortedAgents.map(([agent, total], idx) => `
-            <tr>
-                <td><strong>#${idx + 1}</strong></td>
-                <td><strong>${agent}</strong></td>
-                <td>${formatCurrency(total)}</td>
-            </tr>
-        `).join('');
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
 
-        // Master Company Log Table
-        const masterBody = document.getElementById("masterLogTableBody");
-        masterBody.innerHTML = transactionLog.map(item => `
-            <tr>
-                <td>${item.date}</td>
-                <td><strong>${item.agent}</strong></td>
-                <td>${item.client}</td>
-                <td>${item.project}</td>
-                <td>${item.unit}</td>
-                <td><strong>${formatCurrency(item.tcp)}</strong></td>
-            </tr>
-        `).join('');
-    }
+        function saveSaleEdit() {
+            const saleId = parseInt(document.getElementById('editSaleId').value);
+            const saleIndex = salesData.findIndex(s => s.id === saleId);
 
-    // Set today's date in form by default
-    document.getElementById('dateInput').valueAsDate = new Date();
-</script>
+            if (saleIndex !== -1) {
+                salesData[saleIndex] = {
+                    id: saleId,
+                    agent: document.getElementById('editAgent').value,
+                    date: document.getElementById('editDate').value,
+                    client: document.getElementById('editClient').value,
+                    people: document.getElementById('editPeople').value || "None",
+                    project: document.getElementById('editProject').value,
+                    unit: document.getElementById('editUnit').value,
+                    tcp: parseFloat(document.getElementById('editTcp').value)
+                };
 
+                alert("Transaction record updated!");
+                closeEditModal();
+                renderAgentPortal();
+                renderMtdLeaderboard();
+            }
+        }
+
+        function deleteSale(saleId) {
+            if (confirm("Are you sure you want to delete this sale record? This action cannot be undone.")) {
+                salesData = salesData.filter(s => s.id !== saleId);
+                renderAgentPortal();
+                renderMtdLeaderboard();
+            }
+        }
+
+        function unlockMtd() {
+            const pass = document.getElementById('mtdPasswordInput').value;
+            if (pass === 'egradmin') {
+                document.getElementById('mtdLockScreen').style.display = 'none';
+                document.getElementById('mtdDashboardContent').style.display = 'block';
+                renderMtdLeaderboard();
+            } else {
+                alert("Incorrect Password!");
+            }
+        }
+
+        function renderMtdLeaderboard() {
+            const leaderboardBody = document.getElementById('leaderboardBody');
+            leaderboardBody.innerHTML = '';
+
+            const grandTotal = salesData.reduce((sum, s) => sum + s.tcp, 0);
+            document.getElementById('grandTotalDisplay').innerText = `EGR Grand Total Sales: ₱${grandTotal.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+
+            // Group totals by agent
+            const agentTotals = {};
+            for (let i = 1; i <= 9; i++) {
+                agentTotals[`Agent ${i}`] = 0;
+            }
+            salesData.forEach(s => {
+                if (agentTotals[s.agent] !== undefined) {
+                    agentTotals[s.agent] += s.tcp;
+                }
+            });
+
+            // Sort descending
+            const sortedAgents = Object.entries(agentTotals).sort((a, b) => b[1] - a[1]);
+
+            sortedAgents.forEach(([agent, total], index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>#${index + 1}</strong></td>
+                    <td>${agent}</td>
+                    <td>₱${total.toLocaleString('en-US', {minimumFractionDigits: 2})}</td>
+                `;
+                leaderboardBody.appendChild(tr);
+            });
+        }
+    </script>
 </body>
 </html>
