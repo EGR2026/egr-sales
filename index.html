@@ -112,10 +112,6 @@
             flex-direction: column;
         }
 
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
         label {
             font-weight: 600;
             margin-bottom: 0.4rem;
@@ -280,11 +276,11 @@
                         </div>
                         <div class="form-group">
                             <label>Primary Client Name</label>
-                            <input type="text" id="entryClient" placeholder="e.g., Juan Cruz" required>
+                            <input type="text" id="entryClient" placeholder="e.g., Juan Dela Cruz" required>
                         </div>
                         <div class="form-group">
                             <label>People Included (Co-Buyers / Spouse)</label>
-                            <input type="text" id="entryPeople" placeholder="e.g., Maria Cruz (Spouse)">
+                            <input type="text" id="entryPeople" placeholder="e.g., Maria Dela Cruz (Spouse)">
                         </div>
                         <div class="form-group">
                             <label>Project / Developer</label>
@@ -473,11 +469,7 @@
 
     <script>
         // Store sales data in browser memory
-        let salesData = [
-            { id: 1, agent: "Agent 1", date: "2026-09-01", client: "Juan Dela Cruz", people: "Maria Dela Cruz", project: "Pagsikat Place", unit: "Blk 1 Lot 5", tcp: 1300000 },
-            { id: 2, agent: "Agent 2", date: "2026-09-05", client: "Pedro Penduko", people: "None", project: "Pagsibol Village", unit: "Blk 3 Lot 10", tcp: 1900000 },
-            { id: 3, agent: "Agent 1", date: "2026-09-10", client: "Ana Santos", people: "Mark Santos (Spouse)", project: "Xevera Mabalacat", unit: "Blk 12 Lot 2", tcp: 2500000 }
-        ];
+        let salesData = [];
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -524,14 +516,13 @@
         function renderAgentPortal() {
             const selectedAgent = document.getElementById('portalAgentSelect').value;
             const portalContent = document.getElementById('agentPortalContent');
-            const tableBody = document.getElementById('agentSalesTableBody');
-            
             if (!selectedAgent) {
                 portalContent.style.display = 'none';
                 return;
             }
 
             portalContent.style.display = 'block';
+            const tableBody = document.getElementById('agentSalesTableBody');
             tableBody.innerHTML = '';
 
             const agentSales = salesData.filter(s => s.agent === selectedAgent);
@@ -607,7 +598,7 @@
         }
 
         function deleteSale(saleId) {
-            if (confirm("Are you sure you want to delete this sale record? This action cannot be undone.")) {
+            if (confirm("Are you sure you want to delete this sale record?")) {
                 salesData = salesData.filter(s => s.id !== saleId);
                 renderAgentPortal();
                 renderMtdLeaderboard();
@@ -632,7 +623,6 @@
             const grandTotal = salesData.reduce((sum, s) => sum + s.tcp, 0);
             document.getElementById('grandTotalDisplay').innerText = `EGR Grand Total Sales: ₱${grandTotal.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
 
-            // Group totals by agent
             const agentTotals = {};
             for (let i = 1; i <= 9; i++) {
                 agentTotals[`Agent ${i}`] = 0;
@@ -643,7 +633,6 @@
                 }
             });
 
-            // Sort descending
             const sortedAgents = Object.entries(agentTotals).sort((a, b) => b[1] - a[1]);
 
             sortedAgents.forEach(([agent, total], index) => {
