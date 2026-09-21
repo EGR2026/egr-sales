@@ -5,350 +5,356 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E Galang Realty - Sales Tracking System</title>
     <style>
-    :root {
-        --primary-green: #0a5c36;
-        --secondary-green: #14804a;
-        --accent-red: #c0392b;
-        --bg-light: #f4f6f8;
-        --card-bg: rgba(255, 255, 255, 0.85); /* Semi-transparent card background */
-        --text-dark: #2c3e50;
-        --text-muted: #576574;
-        --border-color: rgba(226, 232, 240, 0.8);
-    }
-
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: var(--text-dark);
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        background-color: var(--bg-light);
-        background-image: linear-gradient(rgba(244, 246, 248, 0.7), rgba(244, 246, 248, 0.7)), url('logo.jpg');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-attachment: fixed;
-        background-size: contain;
-    }
-
-    /* WELCOME OVERLAY SCREEN WITH FADE ANIMATION */
-    #welcomeOverlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(10, 92, 54, 0.95);
-        background-image: linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.85)), url('logo.jpg');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2000;
-        color: white;
-        text-align: center;
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    #welcomeOverlay.fade-out {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .welcome-card {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        padding: 3rem 2.5rem;
-        border-radius: 12px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        max-width: 480px;
-        width: 85%;
-        animation: fadeInWelcome 0.8s ease-out forwards;
-    }
-
-    @keyframes fadeInWelcome {
-        from {
-            opacity: 0;
-            transform: translateY(15px);
+        :root {
+            --primary-green: #0a5c36;
+            --secondary-green: #14804a;
+            --accent-red: #c0392b;
+            --bg-light: #f4f6f8;
+            /* Translucent white for glass cards across all tabs */
+            --card-bg: rgba(255, 255, 255, 0.72); 
+            --text-dark: #2c3e50;
+            --text-muted: #576574;
+            --border-color: rgba(226, 232, 240, 0.7);
         }
-        to {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--bg-light);
+            background-image: linear-gradient(rgba(244, 246, 248, 0.55), rgba(244, 246, 248, 0.55)), url('logo.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: contain;
+        }
+
+        /* WELCOME OVERLAY SCREEN WITH FADE ANIMATION */
+        #welcomeOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 92, 54, 0.95);
+            background-image: linear-gradient(rgba(10, 92, 54, 0.85), rgba(10, 92, 54, 0.85)), url('logo.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            color: white;
+            text-align: center;
             opacity: 1;
-            transform: translateY(0);
+            transition: opacity 0.5s ease-in-out;
         }
-    }
 
-    .welcome-card h1 {
-        margin-top: 0;
-        font-size: 2.2rem;
-        letter-spacing: 1px;
-        color: #ffffff;
-        margin-bottom: 0.5rem;
-    }
+        #welcomeOverlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-    .welcome-card p {
-        font-size: 1rem;
-        color: #e0e0e0;
-        margin-bottom: 2rem;
-    }
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 3rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            max-width: 480px;
+            width: 85%;
+            animation: fadeInWelcome 0.8s ease-out forwards;
+        }
 
-    .btn-welcome {
-        background-color: #ffffff;
-        color: var(--primary-green);
-        border: none;
-        padding: 0.85rem 2rem;
-        font-size: 1.1rem;
-        font-weight: bold;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
+        @keyframes fadeInWelcome {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .btn-welcome:hover {
-        background-color: #f0f0f0;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-    }
+        .welcome-card h1 {
+            margin-top: 0;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
 
-    /* MAIN SYSTEM CONTENT WITH FADE ANIMATION */
-    #mainContent {
-        display: none;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
+        .welcome-card p {
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+        }
 
-    #mainContent.fade-in {
-        display: block;
-        opacity: 1;
-    }
+        .btn-welcome {
+            background-color: #ffffff;
+            color: var(--primary-green);
+            border: none;
+            padding: 0.85rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
 
-    header {
-        background-color: rgba(10, 92, 54, 0.92);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        color: white;
-        padding: 1.5rem 2rem;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
+        .btn-welcome:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
 
-    header h1 {
-        margin: 0;
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-    }
+        /* MAIN SYSTEM CONTENT WITH FADE ANIMATION */
+        #mainContent {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
 
-    header p {
-        margin: 5px 0 0;
-        font-size: 0.9rem;
-        opacity: 0.9;
-    }
+        #mainContent.fade-in {
+            display: block;
+            opacity: 1;
+        }
 
-    nav {
-        display: flex;
-        justify-content: center;
-        background-color: rgba(20, 128, 74, 0.9);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-    }
+        header {
+            background-color: rgba(10, 92, 54, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-    nav button {
-        background: none;
-        border: none;
-        color: white;
-        padding: 1rem 1.5rem;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
 
-    nav button:hover, nav button.active {
-        background-color: rgba(255, 255, 255, 0.25);
-    }
+        header p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
 
-    .container {
-        max-width: 1150px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-    }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(20, 128, 74, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
 
-    .tab-content {
-        display: none;
-    }
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
 
-    .tab-content.active {
-        display: block;
-    }
+        nav button:hover, nav button.active {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
 
-    /* GLASSMORPHISM CARDS FOR DASHBOARD & FORMS */
-    .card {
-        background: var(--card-bg);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        border-radius: 12px;
-        padding: 2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-        margin-bottom: 1.5rem;
-    }
+        .container {
+            max-width: 1150px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
-    .card h2 {
-        margin-top: 0;
-        color: var(--primary-green);
-        border-bottom: 2px solid var(--border-color);
-        padding-bottom: 0.5rem;
-    }
+        .tab-content {
+            display: none;
+        }
 
-    .form-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1.2rem;
-    }
+        .tab-content.active {
+            display: block;
+        }
 
-    .form-group {
-        display: flex;
-        flex-direction: column;
-    }
+        /* TRANSLUCENT CARDS FOR ALL TABS (LOBBY, AGENT PORTAL, MTD) */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+        }
 
-    label {
-        font-weight: 600;
-        margin-bottom: 0.4rem;
-        font-size: 0.9rem;
-    }
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
 
-    input, select {
-        padding: 0.75rem;
-        border: 1px solid var(--border-color);
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 6px;
-        font-size: 0.95rem;
-    }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
 
-    input:focus, select:focus {
-        outline: none;
-        background: #ffffff;
-        border-color: var(--primary-green);
-        box-shadow: 0 0 0 2px rgba(10, 92, 54, 0.15);
-    }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .btn {
-        background-color: var(--primary-green);
-        color: white;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        font-weight: 600;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
+        label {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
 
-    .btn:hover {
-        background-color: var(--secondary-green);
-    }
+        input, select {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
 
-    .btn-danger {
-        background-color: var(--accent-red);
-    }
+        input:focus, select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 2px rgba(10, 92, 54, 0.15);
+        }
 
-    .btn-danger:hover {
-        background-color: #a93226;
-    }
+        .btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
 
-    .btn-sm {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-        margin-right: 0.3rem;
-    }
+        .btn:hover {
+            background-color: var(--secondary-green);
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 1rem;
-    }
+        .btn-danger {
+            background-color: var(--accent-red);
+        }
 
-    th, td {
-        text-align: left;
-        padding: 0.8rem;
-        border-bottom: 1px solid var(--border-color);
-        font-size: 0.9rem;
-    }
+        .btn-danger:hover {
+            background-color: #a93226;
+        }
 
-    th {
-        background-color: rgba(10, 92, 54, 0.9);
-        color: white;
-    }
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            margin-right: 0.3rem;
+        }
 
-    tr:hover {
-        background-color: rgba(10, 92, 54, 0.05);
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            overflow: hidden;
+        }
 
-    .metric-badge {
-        display: inline-block;
-        background: rgba(10, 92, 54, 0.12);
-        color: var(--primary-green);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-weight: bold;
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        border: 1px solid rgba(10, 92, 54, 0.2);
-    }
+        th, td {
+            text-align: left;
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
 
-    /* GLASS MODAL STYLES */
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(4px);
-        justify-content: center;
-        align-items: center;
-        z-index: 3000;
-    }
+        th {
+            background-color: rgba(10, 92, 54, 0.88);
+            color: white;
+        }
 
-    .modal-content {
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        padding: 2rem;
-        border-radius: 12px;
-        width: 90%;
-        max-width: 600px;
-        max-height: 90vh;
-        overflow-y: auto;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    }
+        tr:hover {
+            background-color: rgba(10, 92, 54, 0.08);
+        }
 
-    .modal-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
+        .metric-badge {
+            display: inline-block;
+            background: rgba(10, 92, 54, 0.15);
+            color: var(--primary-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(10, 92, 54, 0.2);
+        }
 
-    footer {
-        text-align: center;
-        padding: 1.5rem;
-        font-size: 0.85rem;
-        color: var(--text-dark);
-        font-weight: 500;
-        border-top: 1px solid var(--border-color);
-        margin-top: 3rem;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(6px);
-    }
-</style>
+        /* TRANSLUCENT MODAL STYLES */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(6px);
+        }
+    </style>
 </head>
 <body>
 
@@ -723,7 +729,6 @@
             if (evt) {
                 evt.target.classList.add('active');
             } else {
-                // Default fallback to highlight the active tab button programmatically
                 const navButtons = document.querySelectorAll('.nav-btn');
                 if (tabId === 'entry' && navButtons[0]) navButtons[0].classList.add('active');
             }
