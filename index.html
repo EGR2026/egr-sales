@@ -30,7 +30,7 @@
             background-size: contain;
         }
 
-        /* WELCOME OVERLAY SCREEN */
+        /* WELCOME OVERLAY SCREEN WITH FADE ANIMATION */
         #welcomeOverlay {
             position: fixed;
             top: 0;
@@ -48,6 +48,13 @@
             z-index: 2000;
             color: white;
             text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #welcomeOverlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .welcome-card {
@@ -59,6 +66,18 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
             max-width: 480px;
             width: 85%;
+            animation: fadeInWelcome 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInWelcome {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .welcome-card h1 {
@@ -94,9 +113,16 @@
             box-shadow: 0 6px 14px rgba(0,0,0,0.2);
         }
 
-        /* MAIN SYSTEM CONTENT */
+        /* MAIN SYSTEM CONTENT WITH FADE ANIMATION */
         #mainContent {
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #mainContent.fade-in {
+            display: block;
+            opacity: 1;
         }
 
         header {
@@ -329,7 +355,7 @@
         </nav>
 
         <div class="container">
-            <!-- 1. ENTRY LOBBY -->
+            <!-- 1. ENTRY LOBBY (DEFAULT LANDING TAB) -->
             <div id="entry" class="tab-content active">
                 <div class="card">
                     <h2>Record New Sale</h2>
@@ -552,12 +578,22 @@
     </div>
 
     <script>
-        // Password Protection for Main Site Access
+        // Password Protection with Fade Out / Fade In Animations
         function promptSitePassword() {
             const password = prompt("Please enter the password to access EGR Sales Database:");
             if (password === "EGR.2026") {
-                document.getElementById('welcomeOverlay').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
+                const overlay = document.getElementById('welcomeOverlay');
+                const mainContent = document.getElementById('mainContent');
+
+                // Trigger Fade Out
+                overlay.classList.add('fade-out');
+
+                // Wait for fade out to complete, then hide overlay & show main content
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    switchTab('entry'); // Ensure user lands on Record New Sale lobby
+                    mainContent.classList.add('fade-in');
+                }, 500);
             } else if (password !== null) {
                 alert("Incorrect Password! Access Denied.");
             }
@@ -663,8 +699,13 @@
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
+            
             if (evt) {
                 evt.target.classList.add('active');
+            } else {
+                // Default fallback to highlight the active tab button programmatically
+                const navButtons = document.querySelectorAll('.nav-btn');
+                if (tabId === 'entry' && navButtons[0]) navButtons[0].classList.add('active');
             }
         }
 
