@@ -73,7 +73,7 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
@@ -243,9 +243,9 @@
     </header>
 
     <nav>
-        <button class="nav-btn active" onclick="switchTab('entry')">Sales Entry Lobby</button>
-        <button class="nav-btn" onclick="switchTab('agent')">Sales Agent Portal</button>
-        <button class="nav-btn" onclick="switchTab('mtd')">EGR MTD Dashboard</button>
+        <button class="nav-btn active" onclick="switchTab('entry', event)">Sales Entry Lobby</button>
+        <button class="nav-btn" onclick="switchTab('agent', event)">Sales Agent Portal</button>
+        <button class="nav-btn" onclick="switchTab('mtd', event)">EGR MTD Dashboard</button>
     </nav>
 
     <div class="container">
@@ -259,15 +259,16 @@
                             <label>Agent Name</label>
                             <select id="entryAgent" required>
                                 <option value="">Select Agent</option>
-                                <option value="Agent 1">Agent 1</option>
-                                <option value="Agent 2">Agent 2</option>
-                                <option value="Agent 3">Agent 3</option>
-                                <option value="Agent 4">Agent 4</option>
-                                <option value="Agent 5">Agent 5</option>
-                                <option value="Agent 6">Agent 6</option>
-                                <option value="Agent 7">Agent 7</option>
-                                <option value="Agent 8">Agent 8</option>
-                                <option value="Agent 9">Agent 9</option>
+                                <option value="Bernardo Plaza">Bernardo Plaza (Sir Bern / Bern Plaza)</option>
+                                <option value="Ruthie Saavedra">Ruthie Saavedra (Mam Ruthie)</option>
+                                <option value="Efren Galang">Efren Galang (Sir Efren)</option>
+                                <option value="Maricar Guemo">Maricar Guemo (Maricar Dueño)</option>
+                                <option value="Cheers Gonzales">Cheers Gonzales</option>
+                                <option value="Joycebeth Mitra">Joycebeth Mitra</option>
+                                <option value="Vivian Ocampo">Vivian Ocampo</option>
+                                <option value="Charles Garcia">Charles Garcia</option>
+                                <option value="Jayson Ravago">Jayson Ravago</option>
+                                <option value="Jhosua Bautista">Jhosua Bautista</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -279,31 +280,31 @@
                             <input type="text" id="entryClient" placeholder="e.g., Juan Dela Cruz" required>
                         </div>
                         <div class="form-group">
-                            <label>People Included (Co-Buyers / Spouse)</label>
-                            <input type="text" id="entryPeople" placeholder="e.g., Maria Dela Cruz (Spouse)">
+                            <label>People Included (Co-Buyers / Spouse / Remarks)</label>
+                            <input type="text" id="entryPeople" placeholder="e.g., Mikaella Pamintuan">
                         </div>
                         <div class="form-group">
                             <label>Project / Developer</label>
                             <select id="entryProject" onchange="handleProjectPriceChange('entryProject', 'entryTcp')" required>
                                 <option value="">Select Project</option>
-                                <option value="Pagsikat Place">Pagsikat Place (Fixed ₱1.3M)</option>
-                                <option value="Pagsibol Village">Pagsibol Village (Fixed ₱1.9M)</option>
+                                <option value="Pagsikat Place">Pagsikat Place</option>
+                                <option value="Pagsibol Village">Pagsibol Village</option>
                                 <option value="Xevera Mabalacat">Xevera Mabalacat</option>
                                 <option value="Highview Haciendas">Highview Haciendas</option>
                                 <option value="Ravenna Homes">Ravenna Homes</option>
                                 <option value="Pasinaya Homes">Pasinaya Homes</option>
                                 <option value="Fiesta Prime">Fiesta Prime</option>
+                                <option value="Fiesta Porac 3">Fiesta Porac 3</option>
+                                <option value="Fiesta Communities">Fiesta Communities</option>
                                 <option value="Sameera Angeles">Sameera Angeles</option>
                                 <option value="Hamana Homes">Hamana Homes</option>
                                 <option value="Claremont">Claremont</option>
-                                <option value="Fiesta Communities">Fiesta Communities</option>
                                 <option value="Kaya Homes">Kaya Homes</option>
-                                <option value="Kaya Terraces">Kaya Terraces</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Unit / Block / Lot</label>
-                            <input type="text" id="entryUnit" placeholder="e.g., Blk 4 Lot 12" required>
+                            <label>Unit / Block / Lot / Phase</label>
+                            <input type="text" id="entryUnit" placeholder="e.g., TH Royale / Blk 4 Lot 12">
                         </div>
                         <div class="form-group">
                             <label>Total Contract Price (TCP)</label>
@@ -321,19 +322,20 @@
         <div id="agent" class="tab-content">
             <div class="card">
                 <h2>Agent Personal Sales Portal</h2>
-                <div class="form-group" style="max-width: 300px; margin-bottom: 1.5rem;">
+                <div class="form-group" style="max-width: 350px; margin-bottom: 1.5rem;">
                     <label>Select Agent Name</label>
                     <select id="portalAgentSelect" onchange="renderAgentPortal()">
                         <option value="">-- Choose Name --</option>
-                        <option value="Agent 1">Agent 1</option>
-                        <option value="Agent 2">Agent 2</option>
-                        <option value="Agent 3">Agent 3</option>
-                        <option value="Agent 4">Agent 4</option>
-                        <option value="Agent 5">Agent 5</option>
-                        <option value="Agent 6">Agent 6</option>
-                        <option value="Agent 7">Agent 7</option>
-                        <option value="Agent 8">Agent 8</option>
-                        <option value="Agent 9">Agent 9</option>
+                        <option value="Bernardo Plaza">Bernardo Plaza</option>
+                        <option value="Ruthie Saavedra">Ruthie Saavedra</option>
+                        <option value="Efren Galang">Efren Galang</option>
+                        <option value="Maricar Guemo">Maricar Guemo</option>
+                        <option value="Cheers Gonzales">Cheers Gonzales</option>
+                        <option value="Joycebeth Mitra">Joycebeth Mitra</option>
+                        <option value="Vivian Ocampo">Vivian Ocampo</option>
+                        <option value="Charles Garcia">Charles Garcia</option>
+                        <option value="Jayson Ravago">Jayson Ravago</option>
+                        <option value="Jhosua Bautista">Jhosua Bautista</option>
                     </select>
                 </div>
 
@@ -347,7 +349,7 @@
                                 <tr>
                                     <th>Date Reserved</th>
                                     <th>Client Name</th>
-                                    <th>People Included</th>
+                                    <th>People Included / Remarks</th>
                                     <th>Project</th>
                                     <th>Unit Details</th>
                                     <th>TCP</th>
@@ -406,15 +408,16 @@
                 <div class="form-group">
                     <label>Agent Name</label>
                     <select id="editAgent" required>
-                        <option value="Agent 1">Agent 1</option>
-                        <option value="Agent 2">Agent 2</option>
-                        <option value="Agent 3">Agent 3</option>
-                        <option value="Agent 4">Agent 4</option>
-                        <option value="Agent 5">Agent 5</option>
-                        <option value="Agent 6">Agent 6</option>
-                        <option value="Agent 7">Agent 7</option>
-                        <option value="Agent 8">Agent 8</option>
-                        <option value="Agent 9">Agent 9</option>
+                        <option value="Bernardo Plaza">Bernardo Plaza</option>
+                        <option value="Ruthie Saavedra">Ruthie Saavedra</option>
+                        <option value="Efren Galang">Efren Galang</option>
+                        <option value="Maricar Guemo">Maricar Guemo</option>
+                        <option value="Cheers Gonzales">Cheers Gonzales</option>
+                        <option value="Joycebeth Mitra">Joycebeth Mitra</option>
+                        <option value="Vivian Ocampo">Vivian Ocampo</option>
+                        <option value="Charles Garcia">Charles Garcia</option>
+                        <option value="Jayson Ravago">Jayson Ravago</option>
+                        <option value="Jhosua Bautista">Jhosua Bautista</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -426,7 +429,7 @@
                     <input type="text" id="editClient" required>
                 </div>
                 <div class="form-group">
-                    <label>People Included (Co-Buyers)</label>
+                    <label>People Included (Co-Buyers / Remarks)</label>
                     <input type="text" id="editPeople">
                 </div>
                 <div class="form-group">
@@ -439,17 +442,17 @@
                         <option value="Ravenna Homes">Ravenna Homes</option>
                         <option value="Pasinaya Homes">Pasinaya Homes</option>
                         <option value="Fiesta Prime">Fiesta Prime</option>
+                        <option value="Fiesta Porac 3">Fiesta Porac 3</option>
+                        <option value="Fiesta Communities">Fiesta Communities</option>
                         <option value="Sameera Angeles">Sameera Angeles</option>
                         <option value="Hamana Homes">Hamana Homes</option>
                         <option value="Claremont">Claremont</option>
-                        <option value="Fiesta Communities">Fiesta Communities</option>
                         <option value="Kaya Homes">Kaya Homes</option>
-                        <option value="Kaya Terraces">Kaya Terraces</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Unit / Block / Lot</label>
-                    <input type="text" id="editUnit" required>
+                    <label>Unit Details</label>
+                    <input type="text" id="editUnit">
                 </div>
                 <div class="form-group">
                     <label>Total Contract Price (TCP)</label>
@@ -468,30 +471,113 @@
     </footer>
 
     <script>
-        // Store sales data in browser memory
-        let salesData = [];
+        // Loaded sales data from image records
+        let salesData = [
+            // JANUARY
+            { id: 1, agent: "Bernardo Plaza", date: "2026-01-12", client: "Joanna G. Arboleda", people: "None", project: "Fiesta Porac 3", unit: "-", tcp: 2656000 },
+            { id: 2, agent: "Ruthie Saavedra", date: "2026-01-16", client: "Armel Joseph Radovan", people: "None", project: "Ravenna Homes", unit: "-", tcp: 2649075 },
+            { id: 3, agent: "Efren Galang", date: "2026-01-21", client: "Reena Gelbolingo", people: "EGR & Smart Choice", project: "Xevera Mabalacat", unit: "TH Royale", tcp: 2354000 },
+            { id: 4, agent: "Efren Galang", date: "2026-01-21", client: "Sheenalyn Tablang", people: "None", project: "Xevera Mabalacat", unit: "TH-A", tcp: 2499000 },
+            { id: 5, agent: "Maricar Guemo", date: "2026-01-24", client: "Nichole Opinga", people: "None", project: "Pagsibol Village", unit: "-", tcp: 1750000 },
+            { id: 6, agent: "Efren Galang", date: "2026-01-24", client: "Jerzel Sison", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+            { id: 7, agent: "Maricar Guemo", date: "2026-01-24", client: "Jhonson Caindoy", people: "Mikaella Pamintuan", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+            { id: 8, agent: "Ruthie Saavedra", date: "2026-01-27", client: "Arjay Alpuerto", people: "None", project: "Pagsibol Village", unit: "-", tcp: 1750000 },
 
-        function switchTab(tabId) {
+            // FEBRUARY
+            { id: 9, agent: "Ruthie Saavedra", date: "2026-02-01", client: "Sean Nicole Capeña", people: "None", project: "Highview Haciendas", unit: "-", tcp: 1795000 },
+            { id: 10, agent: "Ruthie Saavedra", date: "2026-02-01", client: "Charles Steven Perreras", people: "None", project: "Ravenna Homes", unit: "-", tcp: 2649075 },
+            { id: 11, agent: "Ruthie Saavedra", date: "2026-02-01", client: "Wilfredo Gimeno", people: "None", project: "Highview Haciendas", unit: "-", tcp: 1050000 },
+            { id: 12, agent: "Ruthie Saavedra", date: "2026-02-01", client: "Arlene???", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1280000 },
+            { id: 13, agent: "Ruthie Saavedra", date: "2026-02-01", client: "Betina Bien Lopez", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1926600 },
+            { id: 14, agent: "Ruthie Saavedra", date: "2026-02-01", client: "Betina Bien Lopez", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1926600 },
+            { id: 15, agent: "Maricar Guemo", date: "2026-02-01", client: "Richard Grones", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+            { id: 16, agent: "Maricar Guemo", date: "2026-02-01", client: "Celina Ellaine Datu", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+            { id: 17, agent: "Maricar Guemo", date: "2026-02-10", client: "Crystalyn Gapuzan", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1926600 },
+            { id: 18, agent: "Maricar Guemo", date: "2026-02-10", client: "Jeraldyn Montano", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1926600 },
+            { id: 19, agent: "Bernardo Plaza", date: "2026-02-13", client: "Roxanne Lozano", people: "None", project: "Xevera Mabalacat", unit: "-", tcp: 2404600 },
+            { id: 20, agent: "Joycebeth Mitra", date: "2026-02-16", client: "Mark Vincent E. Gaboy", people: "None", project: "Xevera Mabalacat", unit: "Semi Royale", tcp: 2359000 },
+            { id: 21, agent: "Maricar Guemo", date: "2026-02-21", client: "Rein Dalungan", people: "None", project: "Ravenna Homes", unit: "-", tcp: 2091600 },
+            { id: 22, agent: "Efren Galang", date: "2026-02-23", client: "Arissa Caronan", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+
+            // MARCH
+            { id: 23, agent: "Bernardo Plaza", date: "2026-03-14", client: "Ericka Marie Ortiz Dayrit", people: "None", project: "Ravenna Homes", unit: "-", tcp: 2649075 },
+            { id: 24, agent: "Cheers Gonzales", date: "2026-03-16", client: "Charles James Perlas", people: "None", project: "Ravenna Homes", unit: "-", tcp: 2649075 },
+            { id: 25, agent: "Joycebeth Mitra", date: "2026-03-17", client: "Alexis Prencillo", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+            { id: 26, agent: "Cheers Gonzales", date: "2026-03-25", client: "Luis Abacan", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+            { id: 27, agent: "Maricar Guemo", date: "2026-03-25", client: "Mariel Limin", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1250000 },
+
+            // APRIL
+            { id: 28, agent: "Bernardo Plaza", date: "2026-04-01", client: "Lyka Plaza", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1626000 },
+            { id: 29, agent: "Charles Garcia", date: "2026-04-14", client: "Ramzi Benolirao", people: "None", project: "Fiesta Prime", unit: "-", tcp: 3982000 },
+            { id: 30, agent: "Cheers Gonzales", date: "2026-04-26", client: "Jean Gray Rivera", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 31, agent: "Maricar Guemo", date: "2026-04-26", client: "Shiela Ong", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 32, agent: "Maricar Guemo", date: "2026-04-26", client: "Jeffrey Quinto", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 33, agent: "Efren Galang", date: "2026-04-26", client: "John Carlo Ombao", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+
+            // MAY
+            { id: 34, agent: "Maricar Guemo", date: "2026-05-13", client: "Lester G. Garcia", people: "None", project: "Pagsibol Village", unit: "-", tcp: 1750000 },
+            { id: 35, agent: "Efren Galang", date: "2026-05-19", client: "Daniel Teneclan", people: "None", project: "Xevera Mabalacat", unit: "TH SR", tcp: 2349000 },
+            { id: 36, agent: "Bernardo Plaza", date: "2026-05-24", client: "Jennifer Roques", people: "None", project: "Xevera Mabalacat", unit: "TH A", tcp: 2499000 },
+
+            // JUNE
+            { id: 37, agent: "Vivian Ocampo", date: "2026-06-01", client: "Camille N. Matic", people: "Co-assigned: Rizza Santos", project: "Highview Haciendas", unit: "-", tcp: 2080000 },
+            { id: 38, agent: "Vivian Ocampo", date: "2026-06-03", client: "Jeanne Martinez", people: "None", project: "Highview Haciendas", unit: "-", tcp: 2080000 },
+            { id: 39, agent: "Efren Galang", date: "2026-06-06", client: "Roxanne Villegas", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 40, agent: "Maricar Guemo", date: "2026-06-26", client: "Jhon Paul Majait", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 950000 },
+            { id: 41, agent: "Maricar Guemo", date: "2026-06-26", client: "Mar Cadilo Abletes", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 950000 },
+            { id: 42, agent: "Ruthie Saavedra", date: "2026-06-27", client: "Ernesto Ledesma", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 43, agent: "Jayson Ravago", date: "2026-06-30", client: "Nestor L. De Ocampo", people: "None", project: "Xevera Mabalacat", unit: "TH SR", tcp: 2359000 },
+
+            // JULY
+            { id: 44, agent: "Maricar Guemo", date: "2026-07-08", client: "Michael Mabale", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 800000 },
+            { id: 45, agent: "Cheers Gonzales", date: "2026-07-11", client: "Gerardo Jonieca", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1926000 },
+            { id: 46, agent: "Cheers Gonzales", date: "2026-07-11", client: "Gerardo Jonieca", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1926000 },
+            { id: 47, agent: "Bernardo Plaza", date: "2026-07-18", client: "Julie Ann E. Antonio", people: "None", project: "Kaya Homes", unit: "-", tcp: 950000 },
+            { id: 48, agent: "Bernardo Plaza", date: "2026-07-18", client: "Kathleen Joy E. Antonio", people: "None", project: "Kaya Homes", unit: "-", tcp: 950000 },
+            { id: 49, agent: "Vivian Ocampo", date: "2026-07-18", client: "Michaela Dan S. Caoc", people: "None", project: "Ravenna Homes", unit: "-", tcp: 1926000 },
+            { id: 50, agent: "Cheers Gonzales", date: "2026-07-18", client: "Kurt Salamat", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 51, agent: "Cheers Gonzales", date: "2026-07-18", client: "Agnes Carreon", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 52, agent: "Jayson Ravago", date: "2026-07-24", client: "Trisha Nicole B. Payumo", people: "None", project: "Sameera Angeles", unit: "TH-SR P", tcp: 2499000 },
+            { id: 53, agent: "Efren Galang", date: "2026-07-25", client: "Boyd James Saja", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 54, agent: "Maricar Guemo", date: "2026-07-27", client: "Melvin Gozum Dela Cruz", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 800000 },
+            { id: 55, agent: "Maricar Guemo", date: "2026-07-27", client: "Limuel Tinio Gozum", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 800000 },
+
+            // AUGUST
+            { id: 56, agent: "Efren Galang", date: "2026-08-08", client: "Mary Anne Laure Alagos", people: "Billy", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 57, agent: "Ruthie Saavedra", date: "2026-08-08", client: "Joel Maniti", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 58, agent: "Efren Galang", date: "2026-08-13", client: "Jeralyn Edaño", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+            { id: 59, agent: "Vivian Ocampo", date: "2026-08-23", client: "Jasmin Contreras Milagrosa", people: "Thelma", project: "Claremont", unit: "Filinvest", tcp: 4547100 },
+            { id: 60, agent: "Maricar Guemo", date: "2026-08-28", client: "Lowie Miguel Baniel", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 950000 },
+            { id: 61, agent: "Maricar Guemo", date: "2026-08-28", client: "Mariejo Mendeja Canada", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 800000 },
+            { id: 62, agent: "Maricar Guemo", date: "2026-08-28", client: "Dennis Calma Francisco", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 950000 },
+            { id: 63, agent: "Efren Galang", date: "2026-08-28", client: "Audie Aguilar", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 900000 },
+            { id: 64, agent: "Joycebeth Mitra", date: "2026-08-28", client: "Arwin David", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 900000 },
+            { id: 65, agent: "Maricar Guemo", date: "2026-08-29", client: "Wilhelm Corminal", people: "None", project: "Pagsikat Place", unit: "-", tcp: 1300000 },
+
+            // SEPTEMBER
+            { id: 66, agent: "Ruthie Saavedra", date: "2026-09-04", client: "Arian Kristelle Santos Calma", people: "None", project: "Claremont", unit: "-", tcp: 4894600 },
+            { id: 67, agent: "Ruthie Saavedra", date: "2026-09-04", client: "Renalyn Tan", people: "and Co.", project: "Pagsikat Place", unit: "-", tcp: 1310000 },
+            { id: 68, agent: "Cheers Gonzales", date: "2026-09-04", client: "Michael Escaño", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 950000 },
+            { id: 69, agent: "Ruthie Saavedra", date: "2026-09-04", client: "Aflen Garcia", people: "and Co.", project: "Pasinaya Homes", unit: "-", tcp: 950000 },
+            { id: 70, agent: "Vivian Ocampo", date: "2026-09-07", client: "Khimier Blance Manalo", people: "None", project: "Hamana Homes", unit: "-", tcp: 5960877 },
+            { id: 71, agent: "Ruthie Saavedra", date: "2026-09-09", client: "Camille Dela Cruz", people: "None", project: "Fiesta Communities", unit: "KT", tcp: 2514250 },
+            { id: 72, agent: "Maricar Guemo", date: "2026-09-12", client: "Marvin Luzong Cuevas", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 800000 },
+            { id: 73, agent: "Maricar Guemo", date: "2026-09-12", client: "Kevin Luzong Cuevas", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 800000 },
+            { id: 74, agent: "Maricar Guemo", date: "2026-09-12", client: "Charlene Luzong Cuevas", people: "None", project: "Pasinaya Homes", unit: "-", tcp: 800000 }
+        ];
+
+        function switchTab(tabId, evt) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
+            if (evt) {
+                evt.target.classList.add('active');
+            }
         }
 
         function handleProjectPriceChange(projectSelectId, tcpInputId) {
-            const proj = document.getElementById(projectSelectId).value;
-            const tcpInput = document.getElementById(tcpInputId);
-            
-            if (proj === "Pagsikat Place") {
-                tcpInput.value = 1300000;
-                tcpInput.readOnly = true;
-            } else if (proj === "Pagsibol Village") {
-                tcpInput.value = 1900000;
-                tcpInput.readOnly = true;
-            } else {
-                tcpInput.readOnly = false;
-            }
+            // Optional preset price logic can go here
         }
 
         function handleNewSale(e) {
@@ -503,7 +589,7 @@
                 client: document.getElementById('entryClient').value,
                 people: document.getElementById('entryPeople').value || "None",
                 project: document.getElementById('entryProject').value,
-                unit: document.getElementById('entryUnit').value,
+                unit: document.getElementById('entryUnit').value || "-",
                 tcp: parseFloat(document.getElementById('entryTcp').value)
             };
 
@@ -566,7 +652,6 @@
             document.getElementById('editUnit').value = sale.unit;
             document.getElementById('editTcp').value = sale.tcp;
 
-            handleProjectPriceChange('editProject', 'editTcp');
             document.getElementById('editModal').style.display = 'flex';
         }
 
@@ -586,7 +671,7 @@
                     client: document.getElementById('editClient').value,
                     people: document.getElementById('editPeople').value || "None",
                     project: document.getElementById('editProject').value,
-                    unit: document.getElementById('editUnit').value,
+                    unit: document.getElementById('editUnit').value || "-",
                     tcp: parseFloat(document.getElementById('editTcp').value)
                 };
 
@@ -623,10 +708,19 @@
             const grandTotal = salesData.reduce((sum, s) => sum + s.tcp, 0);
             document.getElementById('grandTotalDisplay').innerText = `EGR Grand Total Sales: ₱${grandTotal.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
 
-            const agentTotals = {};
-            for (let i = 1; i <= 9; i++) {
-                agentTotals[`Agent ${i}`] = 0;
-            }
+            const agentTotals = {
+                "Bernardo Plaza": 0,
+                "Ruthie Saavedra": 0,
+                "Efren Galang": 0,
+                "Maricar Guemo": 0,
+                "Cheers Gonzales": 0,
+                "Joycebeth Mitra": 0,
+                "Vivian Ocampo": 0,
+                "Charles Garcia": 0,
+                "Jayson Ravago": 0,
+                "Jhosua Bautista": 0
+            };
+
             salesData.forEach(s => {
                 if (agentTotals[s.agent] !== undefined) {
                     agentTotals[s.agent] += s.tcp;
