@@ -289,9 +289,9 @@
     </header>
 
     <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('transactionForm')">New Transaction</button>
-        <button class="tab-btn" onclick="switchTab('masterList')">Master Sales List</button>
-        <button class="tab-btn" onclick="switchTab('agentPortal')">Manager / Agent Portal</button>
+        <button class="tab-btn active" onclick="switchTab('transactionForm', event)">New Transaction</button>
+        <button class="tab-btn" onclick="switchTab('masterList', event)">Master Sales List</button>
+        <button class="tab-btn" onclick="switchTab('agentPortal', event)">Manager / Agent Portal</button>
     </div>
 
     <!-- TAB 1: NEW TRANSACTION FORM -->
@@ -305,7 +305,7 @@
                         <input type="date" id="saleDate" required>
                     </div>
                     <div class="form-group">
-                        <label>Client Name</label>
+                        <label>Client Name / Buyer</label>
                         <input type="text" id="clientName" placeholder="e.g. Juan Cruz" required>
                     </div>
                     <div class="form-group">
@@ -316,41 +316,19 @@
                         <label>Project / Subdivision</label>
                         <select id="projectSelect" required>
                             <option value="">Select Project/Subdivision</option>
-                            <option value="Pagsikat Place">Pagsikat Place</option>
-                            <option value="Pagsibol Village">Pagsibol Village</option>
-                            <option value="Xevera Mabalacat">Xevera Mabalacat</option>
-                            <option value="Xevera Prestige">Xevera Prestige</option>
-                            <option value="Highview Haciendas">Highview Haciendas</option>
-                            <option value="Ravenna Homes">Ravenna Homes</option>
-                            <option value="Pasinaya Homes">Pasinaya Homes</option>
-                            <option value="Fiesta Prime">Fiesta Prime</option>
                             <option value="Fiesta Porac 3">Fiesta Porac 3</option>
-                            <option value="Fiesta Communities">Fiesta Communities</option>
-                            <option value="Sameera Angeles">Sameera Angeles</option>
-                            <option value="Hamana Homes">Hamana Homes</option>
-                            <option value="Claremont">Claremont</option>
+                            <option value="Ravenna Homes">Ravenna Homes</option>
+                            <option value="Xevera Mabalacat">Xevera Mabalacat</option>
+                            <option value="Pagsibol Village">Pagsibol Village</option>
+                            <option value="Pagsikat Place">Pagsikat Place</option>
+                            <option value="Highview Haciendas">Highview Haciendas</option>
+                            <option value="Fiesta Prime">Fiesta Prime</option>
                             <option value="Kaya Homes">Kaya Homes</option>
-                            <option value="Xevera Bacolor">Xevera Bacolor</option>
-                            <option value="Arrowville North Subdivision">Arrowville North Subdivision</option>
-                            <option value="Talanai Homes">Talanai Homes</option>
-                            <option value="Madonna Residences">Madonna Residences</option>
-                            <option value="Mawing Residences">Mawing Residences</option>
-                            <option value="Solana Zaragosa">Solana Zaragosa</option>
-                            <option value="Amaia Scapes">Amaia Scapes</option>
-                            <option value="Bria Homes">Bria Homes</option>
-                            <option value="Bloomfields Residences">Bloomfields Residences</option>
-                            <option value="Cheerful Homes 1">Cheerful Homes 1</option>
-                            <option value="Cheerful Homes 2">Cheerful Homes 2</option>
-                            <option value="Symphony Homes">Symphony Homes</option>
-                            <option value="Fairgrounds Subdivision">Fairgrounds Subdivision</option>
-                            <option value="Ajoya Subdivision">Ajoya Subdivision</option>
-                            <option value="Metrogate Angeles">Metrogate Angeles</option>
-                            <option value="Las Palmeras">Las Palmeras</option>
-                            <option value="PHirst Park Homes - Magalang">PHirst Park Homes - Magalang</option>
-                            <option value="PHirst Park Homes - Magalang East">PHirst Park Homes - Magalang East</option>
-                            <option value="Denisa Townhomes">Denisa Townhomes</option>
-                            <option value="Deca Homes - Angeles">Deca Homes - Angeles</option>
-                            <option value="Deca Homes - Cutud">Deca Homes - Cutud</option>
+                            <option value="Pasinaya Homes">Pasinaya Homes</option>
+                            <option value="Sameera Angeles">Sameera Angeles</option>
+                            <option value="Claremont">Claremont</option>
+                            <option value="Hamana Homes">Hamana Homes</option>
+                            <option value="Fiesta Communities">Fiesta Communities</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -369,10 +347,12 @@
                             <option value="Ruthie Saavedra">Ruthie Saavedra</option>
                             <option value="Efren Galang">Efren Galang</option>
                             <option value="Maricar Bueño">Maricar Bueño</option>
+                            <option value="Cheers Gonzales">Cheers Gonzales</option>
                             <option value="Joycebeth Mitra">Joycebeth Mitra</option>
                             <option value="Vivian Ocampo">Vivian Ocampo</option>
                             <option value="Charles Garcia">Charles Garcia</option>
                             <option value="Jayson Ravago">Jayson Ravago</option>
+                            <option value="EGR & Smart Choice">EGR & Smart Choice</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -402,7 +382,7 @@
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Client</th>
+                            <th>Client / Buyer</th>
                             <th>People Involved</th>
                             <th>Project</th>
                             <th>Unit/Lot</th>
@@ -432,10 +412,12 @@
                     <option value="Ruthie Saavedra">Ruthie Saavedra</option>
                     <option value="Efren Galang">Efren Galang</option>
                     <option value="Maricar Bueño">Maricar Bueño</option>
+                    <option value="Cheers Gonzales">Cheers Gonzales</option>
                     <option value="Joycebeth Mitra">Joycebeth Mitra</option>
                     <option value="Vivian Ocampo">Vivian Ocampo</option>
                     <option value="Charles Garcia">Charles Garcia</option>
                     <option value="Jayson Ravago">Jayson Ravago</option>
+                    <option value="EGR & Smart Choice">EGR & Smart Choice</option>
                 </select>
             </div>
 
@@ -446,7 +428,7 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Client</th>
+                                <th>Client / Buyer</th>
                                 <th>People Involved</th>
                                 <th>Project</th>
                                 <th>Unit/Lot</th>
@@ -478,7 +460,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Manager</th>
+                        <th>Manager / Team</th>
                         <th>Total Production</th>
                     </tr>
                 </thead>
@@ -501,10 +483,10 @@
             <input type="hidden" id="editSaleId">
             <div class="form-group" style="margin-bottom: 12px;">
                 <label>Date</label>
-                <input type="date" id="editDate" required>
+                <input type="text" id="editDate" required>
             </div>
             <div class="form-group" style="margin-bottom: 12px;">
-                <label>Client Name</label>
+                <label>Client Name / Buyer</label>
                 <input type="text" id="editClient" required>
             </div>
             <div class="form-group" style="margin-bottom: 12px;">
@@ -517,7 +499,7 @@
             </div>
             <div class="form-group" style="margin-bottom: 12px;">
                 <label>Unit/Lot</label>
-                <input type="text" id="editUnit" required>
+                <input type="text" id="editUnit">
             </div>
             <div class="form-group" style="margin-bottom: 12px;">
                 <label>TCP (₱)</label>
@@ -535,7 +517,7 @@
                     <option value="Vivian Ocampo">Vivian Ocampo</option>
                     <option value="Charles Garcia">Charles Garcia</option>
                     <option value="Jayson Ravago">Jayson Ravago</option>
-                    <option value="Jhosua Bautista">Jhosua Bautista</option>
+                    <option value="EGR & Smart Choice">EGR & Smart Choice</option>
                 </select>
             </div>
             <div class="form-group" style="margin-bottom: 12px;">
@@ -572,11 +554,103 @@
         "Vivian Ocampo": "vivian2026",
         "Charles Garcia": "charles2026",
         "Jayson Ravago": "jayson2026",
-        "Jhosua Bautista": "jhosua2026"
+        "EGR & Smart Choice": "egr2026"
     };
 
-    // Global Sales State Array
-    let salesData = [];
+    // HARDCODED DATABASE OF ALL 82 SALES TRANSACTIONS (JAN - SEP 2026)
+    let salesData = [
+        // JANUARY
+        { id: 1, date: "January 12, 2026", client: "Joanna G. Arboleda", people: "-", project: "Fiesta Porac 3", unit: "-", tcp: 2656000, manager: "Bernardo Plaza", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 2, date: "January 16, 2026", client: "Armel Joseph Radovan", people: "-", project: "Ravenna Homes", unit: "-", tcp: 2649075, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 3, date: "January 21, 2026", client: "Reena Gelbolingo", people: "-", project: "Xevera Mabalacat (TH Royale)", unit: "-", tcp: 2354000, manager: "EGR & Smart Choice", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 4, date: "January 21, 2026", client: "Sheenalyn Tablang", people: "-", project: "Xevera Mabalacat (TH-A)", unit: "-", tcp: 2499000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 5, date: "January 24, 2026", client: "Nichole Opinga", people: "-", project: "Pagsibol Village", unit: "-", tcp: 1750000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 6, date: "January 24, 2026", client: "Jerzel Sison", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 7, date: "January 24, 2026", client: "Jhonson Caindoy", people: "Mikaella Pamintuan", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 8, date: "January 27, 2026", client: "Arjay Alpuerto", people: "-", project: "Pagsibol Village", unit: "-", tcp: 1750000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // FEBRUARY
+        { id: 9, date: "February 01, 2026", client: "Sean Nicole Cañeña", people: "-", project: "Highview Haciendas", unit: "-", tcp: 1795000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 10, date: "February 01, 2026", client: "Charles Steven Perreras", people: "-", project: "Ravenna Homes", unit: "-", tcp: 2649075, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 11, date: "February 01, 2026", client: "Wilfredo Gimeno", people: "-", project: "Highview Haciendas", unit: "-", tcp: 1050000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 12, date: "February 01, 2026", client: "Arlene???", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1280000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 13, date: "February 01, 2026", client: "Betina Bien Lopez", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1926600, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 14, date: "February 01, 2026", client: "Betina Bien Lopez", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1926600, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 15, date: "February 01, 2026", client: "Richard Grones", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 16, date: "February 01, 2026", client: "Celina Ellaine Datu", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 17, date: "February 10, 2026", client: "Crystalyn Gapuzan", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1926600, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 18, date: "February 10, 2026", client: "Jeraldyn Montano", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1926600, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 19, date: "February 13, 2026", client: "Roxanne Lozano", people: "-", project: "Xevera Mabalacat", unit: "-", tcp: 2404600, manager: "Bernardo Plaza", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 20, date: "February 16, 2026", client: "Mark Vincent E. Gaboy", people: "-", project: "Xevera Mabalacat (Semi Royale)", unit: "-", tcp: 2359000, manager: "Joycebeth Mitra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 21, date: "February 21, 2026", client: "Rein Dalungan", people: "-", project: "Ravenna Homes", unit: "-", tcp: 2091600, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 22, date: "February 23, 2026", client: "Arissa Caronan", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // MARCH
+        { id: 23, date: "March 14, 2026", client: "Ericka Marie Ortiz Dayrit", people: "-", project: "Ravenna Homes", unit: "-", tcp: 2649075, manager: "Bernardo Plaza", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 24, date: "March 16, 2026", client: "Charles James Perlas", people: "-", project: "Ravenna Homes", unit: "-", tcp: 2649075, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 25, date: "March 17, 2026", client: "Alexis Prencillo", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Joycebeth Mitra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 26, date: "March 25, 2026", client: "Luis Abacan", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 27, date: "March 25, 2026", client: "Mariel Limin", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1250000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // APRIL
+        { id: 28, date: "April 01, 2026", client: "Lyka Plaza", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1626000, manager: "Bernardo Plaza", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 29, date: "April 14, 2026", client: "Ramzi Benolirao", people: "-", project: "Fiesta Prime", unit: "-", tcp: 3982000, manager: "Charles Garcia", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 30, date: "April 26, 2026", client: "Jean Gray Rivera", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 31, date: "April 26, 2026", client: "Shiela Ong", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 32, date: "April 26, 2026", client: "Jeffrey Quinto", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 33, date: "April 26, 2026", client: "John Carlo Ombao", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // MAY
+        { id: 34, date: "May 13, 2026", client: "Lester G. Garcia", people: "-", project: "Pagsibol Village", unit: "-", tcp: 1750000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 35, date: "May 19, 2026", client: "Daniel Teneclan", people: "-", project: "Xevera Mabalacat (TH SR)", unit: "-", tcp: 2349000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 36, date: "May 24, 2026", client: "Jennifer Roques", people: "-", project: "Xevera Mabalacat (TH A)", unit: "-", tcp: 2499000, manager: "Bernardo Plaza", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // JUNE
+        { id: 37, date: "June 01, 2026", client: "Camille N. Matic", people: "-", project: "Highview Haciendas", unit: "-", tcp: 2080000, manager: "EGR & Smart Choice", saleType: "Agent Sale", agentName: "Rizza Santos" },
+        { id: 38, date: "June 03, 2026", client: "Jeanne Martinez", people: "-", project: "Highview Haciendas", unit: "-", tcp: 2080000, manager: "Vivian Ocampo", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 39, date: "June 06, 2026", client: "Roxanne Villegas", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 40, date: "June 26, 2026", client: "Jhon Paul Majait", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 950000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 41, date: "June 26, 2026", client: "Mar Cadillo Abletes", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 950000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 42, date: "June 27, 2026", client: "Ernesto Ledesma", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 43, date: "June 30, 2026", client: "Nestor L. De Ocampo", people: "-", project: "Xevera Mabalacat (TH SR)", unit: "-", tcp: 2359000, manager: "Jayson Ravago", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // JULY
+        { id: 44, date: "July 08, 2026", client: "Michael Mabale", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 800000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 45, date: "July 11, 2026", client: "Gerardo Jonieca", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1926000, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 46, date: "July 11, 2026", client: "Gerardo Jonieca", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1926000, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 47, date: "July 18, 2026", client: "Julie Ann E. Antonio", people: "-", project: "Kaya Homes", unit: "-", tcp: 950000, manager: "Bernardo Plaza", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 48, date: "July 18, 2026", client: "Kathleen Joy E. Antonio", people: "-", project: "Kaya Homes", unit: "-", tcp: 950000, manager: "Bernardo Plaza", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 49, date: "July 18, 2026", client: "Michaela Dan S. Caoc", people: "-", project: "Ravenna Homes", unit: "-", tcp: 1926000, manager: "Vivian Ocampo", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 50, date: "July 18, 2026", client: "Kurt Salamat", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 51, date: "July 18, 2026", client: "Agnes Carreon", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 52, date: "July 24, 2026", client: "Trisha Nicole B. Payumo", people: "-", project: "Sameera Angeles (TH-SR P)", unit: "-", tcp: 2499000, manager: "Jayson Ravago", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 53, date: "July 25, 2026", client: "Boyd James Saja", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 54, date: "July 27, 2026", client: "Melvin Gozum Dela Cruz", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 800000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 55, date: "July 27, 2026", client: "Limuel Tinio Gozum", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 800000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // AUGUST
+        { id: 56, date: "August 08, 2026", client: "Mary Anne Laure Alagos", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Efren Galang", saleType: "Agent Sale", agentName: "Billy" },
+        { id: 57, date: "August 08, 2026", client: "Joel Maniti", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 58, date: "August 13, 2026", client: "Jeralyn Edaño", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 59, date: "August 23, 2026", client: "Jasmin Contreras Milagrosa", people: "-", project: "Claremont (Filinvest)", unit: "-", tcp: 4547100, manager: "Vivian Ocampo", saleType: "Agent Sale", agentName: "Thelma" },
+        { id: 60, date: "August 28, 2026", client: "Lowie Miguel Baniel", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 950000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 61, date: "August 28, 2026", client: "Mariejo Mendeja Canada", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 800000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 62, date: "August 28, 2026", client: "Dennis Calma Francisco", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 950000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 63, date: "August 28, 2026", client: "Audie Aguilar", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 900000, manager: "Efren Galang", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 64, date: "August 28, 2026", client: "Arwin David", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 900000, manager: "Joycebeth Mitra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 65, date: "August 29, 2026", client: "Wilhelm Corminal", people: "-", project: "Pagsikat Place", unit: "-", tcp: 1300000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+
+        // SEPTEMBER
+        { id: 66, date: "September 04, 2026", client: "Arian Kristelle Santos Calma", people: "-", project: "Claremont", unit: "-", tcp: 4894600, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 67, date: "September 04, 2026", client: "Renalyn Tan", people: "and Co.", project: "Pagsikat Place", unit: "-", tcp: 1310000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 68, date: "September 04, 2026", client: "Michael Escaño", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 950000, manager: "Cheers Gonzales", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 69, date: "September 04, 2026", client: "Allen Garcia", people: "and Co.", project: "Pasinaya Homes", unit: "-", tcp: 950000, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 70, date: "September 07, 2026", client: "Khimier Blance Manalo", people: "-", project: "Hamana Homes", unit: "-", tcp: 5960877, manager: "Vivian Ocampo", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 71, date: "September 09, 2026", client: "Camille Dela Cruz", people: "-", project: "Fiesta Communities (KT)", unit: "-", tcp: 2514250, manager: "Ruthie Saavedra", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 72, date: "September 12, 2026", client: "Marvin Luzong Cuevas", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 800000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 73, date: "September 12, 2026", client: "Kevin Luzong Cuevas", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 800000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" },
+        { id: 74, date: "September 12, 2026", client: "Charlene Luzong Cuevas", people: "-", project: "Pasinaya Homes", unit: "-", tcp: 800000, manager: "Maricar Bueño", saleType: "Personal Sale", agentName: "Personal Sale" }
+    ];
 
     // Toggle Agent Name input box on form based on Sale Type selection
     function toggleAgentInput() {
@@ -606,12 +680,14 @@
     }
 
     // Switch View Tabs
-    function switchTab(tabId) {
+    function switchTab(tabId, event) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
 
         document.getElementById(tabId).classList.add('active');
-        event.target.classList.add('active');
+        if (event && event.target) {
+            event.target.classList.add('active');
+        }
 
         if (tabId === 'masterList') renderMasterList();
         if (tabId === 'agentPortal') {
@@ -631,9 +707,9 @@
             id: Date.now(),
             date: document.getElementById('saleDate').value,
             client: document.getElementById('clientName').value,
-            people: document.getElementById('peopleInvolved').value || 'N/A',
+            people: document.getElementById('peopleInvolved').value || '-',
             project: document.getElementById('projectSelect').value,
-            unit: document.getElementById('unitDetails').value,
+            unit: document.getElementById('unitDetails').value || '-',
             tcp: parseFloat(document.getElementById('tcpAmount').value),
             manager: document.getElementById('managerSelect').value,
             saleType: saleType,
@@ -737,8 +813,16 @@
         }
     }
 
-    // MTD Modal Functions
+    // MTD Modal Function with Password Protection
     function openMtdModal() {
+        const pwd = prompt("Enter Master Admin or Manager Password to view EGR Sales Summary:");
+        const isValidPassword = pwd === MASTER_ADMIN_PASSWORD || Object.values(managerPasswords).includes(pwd);
+
+        if (!isValidPassword) {
+            alert("Access Denied: Invalid Password!");
+            return;
+        }
+
         const mtdTableBody = document.getElementById('mtdTableBody');
         mtdTableBody.innerHTML = '';
 
@@ -748,14 +832,18 @@
 
         const managers = Object.keys(managerPasswords);
 
-        managers.forEach(mgr => {
+        // Sort managers by total volume descending
+        const mgrTotals = managers.map(mgr => {
             const mgrSales = salesData.filter(s => s.manager === mgr);
-            const mgrTotal = mgrSales.reduce((sum, item) => sum + item.tcp, 0);
+            const total = mgrSales.reduce((sum, item) => sum + item.tcp, 0);
+            return { manager: mgr, total: total };
+        }).sort((a, b) => b.total - a.total);
 
+        mgrTotals.forEach(item => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><strong>${mgr}</strong></td>
-                <td>₱${mgrTotal.toLocaleString('en-US', {minimumFractionDigits: 2})}</td>
+                <td><strong>${item.manager}</strong></td>
+                <td>₱${item.total.toLocaleString('en-US', {minimumFractionDigits: 2})}</td>
             `;
             mtdTableBody.appendChild(tr);
         });
