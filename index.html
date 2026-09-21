@@ -30,6 +30,75 @@
             background-size: contain;
         }
 
+        /* WELCOME OVERLAY SCREEN */
+        #welcomeOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 92, 54, 0.95);
+            background-image: linear-gradient(rgba(10, 92, 54, 0.9), rgba(10, 92, 54, 0.9)), url('logo.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            color: white;
+            text-align: center;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            max-width: 480px;
+            width: 85%;
+        }
+
+        .welcome-card h1 {
+            margin-top: 0;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-card p {
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .btn-welcome {
+            background-color: #ffffff;
+            color: var(--primary-green);
+            border: none;
+            padding: 0.85rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .btn-welcome:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        /* MAIN SYSTEM CONTENT */
+        #mainContent {
+            display: none;
+        }
+
         header {
             background-color: var(--primary-green);
             color: white;
@@ -205,7 +274,7 @@
             background: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 3000;
         }
 
         .modal-content {
@@ -237,126 +306,171 @@
 </head>
 <body>
 
-    <header>
-        <h1>E GALANG REALTY</h1>
-        <p>WE HELP YOU TO FIND THE BEST INVESTMENT AND HOME FOR YOU</p>
-    </header>
-
-    <nav>
-        <button class="nav-btn active" onclick="switchTab('entry', event)">Sales Entry Lobby</button>
-        <button class="nav-btn" onclick="switchTab('agent', event)">Sales Agent Portal</button>
-        <button class="nav-btn" onclick="switchTab('mtd', event)">EGR MTD Dashboard</button>
-    </nav>
-
-    <div class="container">
-        <!-- 1. ENTRY LOBBY -->
-        <div id="entry" class="tab-content active">
-            <div class="card">
-                <h2>Record New Sale</h2>
-                <form id="salesForm" onsubmit="handleNewSale(event)">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>Agent Name</label>
-                            <select id="entryAgent" required>
-                                <option value="">Select Agent</option>
-                                <option value="Bernardo Plaza">Bernardo Plaza (Sir Bern / Bern Plaza)</option>
-                                <option value="Ruthie Saavedra">Ruthie Saavedra (Mam Ruthie)</option>
-                                <option value="Efren Galang">Efren Galang (Sir Efren)</option>
-                                <option value="Maricar Guemo">Maricar Guemo (Maricar Dueño)</option>
-                                <option value="Cheers Gonzales">Cheers Gonzales</option>
-                                <option value="Joycebeth Mitra">Joycebeth Mitra</option>
-                                <option value="Vivian Ocampo">Vivian Ocampo</option>
-                                <option value="Charles Garcia">Charles Garcia</option>
-                                <option value="Jayson Ravago">Jayson Ravago</option>
-                                <option value="Jhosua Bautista">Jhosua Bautista</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Reservation Date</label>
-                            <input type="date" id="entryDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Primary Client Name</label>
-                            <input type="text" id="entryClient" placeholder="e.g., Juan Dela Cruz" required>
-                        </div>
-                        <div class="form-group">
-                            <label>People Included (Co-Buyers / Spouse / Remarks)</label>
-                            <input type="text" id="entryPeople" placeholder="e.g., Mikaella Pamintuan">
-                        </div>
-                        <div class="form-group">
-                            <label>Project / Developer</label>
-                            <select id="entryProject" onchange="handleProjectPriceChange('entryProject', 'entryTcp')" required>
-                                <option value="">Select Project</option>
-                                <option value="Pagsikat Place">Pagsikat Place</option>
-                                <option value="Pagsibol Village">Pagsibol Village</option>
-                                <option value="Xevera Mabalacat">Xevera Mabalacat</option>
-                                <option value="Highview Haciendas">Highview Haciendas</option>
-                                <option value="Ravenna Homes">Ravenna Homes</option>
-                                <option value="Pasinaya Homes">Pasinaya Homes</option>
-                                <option value="Fiesta Prime">Fiesta Prime</option>
-                                <option value="Fiesta Porac 3">Fiesta Porac 3</option>
-                                <option value="Fiesta Communities">Fiesta Communities</option>
-                                <option value="Sameera Angeles">Sameera Angeles</option>
-                                <option value="Hamana Homes">Hamana Homes</option>
-                                <option value="Claremont">Claremont</option>
-                                <option value="Kaya Homes">Kaya Homes</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Unit / Block / Lot / Phase</label>
-                            <input type="text" id="entryUnit" placeholder="e.g., TH Royale / Blk 4 Lot 12">
-                        </div>
-                        <div class="form-group">
-                            <label>Total Contract Price (TCP)</label>
-                            <input type="number" id="entryTcp" placeholder="₱ Amount" required>
-                        </div>
-                    </div>
-                    <div style="margin-top: 1.5rem; text-align: right;">
-                        <button type="submit" class="btn">Submit Transaction</button>
-                    </div>
-                </form>
-            </div>
+    <!-- WELCOME GREETING OVERLAY -->
+    <div id="welcomeOverlay">
+        <div class="welcome-card">
+            <h1>Welcome to EGR Sales Database</h1>
+            <p>E GALANG REALTY INTERNAL PORTAL</p>
+            <button class="btn-welcome" onclick="promptSitePassword()">Enter Site</button>
         </div>
+    </div>
 
-        <!-- 2. AGENT PORTAL -->
-        <div id="agent" class="tab-content">
-            <div class="card">
-                <h2>Agent Personal Sales Portal</h2>
-                <div class="form-group" style="max-width: 350px; margin-bottom: 1.5rem;">
-                    <label>Select Agent Name</label>
-                    <select id="portalAgentSelect" onchange="renderAgentPortal()">
-                        <option value="">-- Choose Name --</option>
-                        <option value="Bernardo Plaza">Bernardo Plaza</option>
-                        <option value="Ruthie Saavedra">Ruthie Saavedra</option>
-                        <option value="Efren Galang">Efren Galang</option>
-                        <option value="Maricar Guemo">Maricar Guemo</option>
-                        <option value="Cheers Gonzales">Cheers Gonzales</option>
-                        <option value="Joycebeth Mitra">Joycebeth Mitra</option>
-                        <option value="Vivian Ocampo">Vivian Ocampo</option>
-                        <option value="Charles Garcia">Charles Garcia</option>
-                        <option value="Jayson Ravago">Jayson Ravago</option>
-                        <option value="Jhosua Bautista">Jhosua Bautista</option>
-                    </select>
+    <!-- MAIN SYSTEM INTERFACE -->
+    <div id="mainContent">
+        <header>
+            <h1>E GALANG REALTY</h1>
+            <p>WE HELP YOU TO FIND THE BEST INVESTMENT AND HOME FOR YOU</p>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" onclick="switchTab('entry', event)">Sales Entry Lobby</button>
+            <button class="nav-btn" onclick="switchTab('agent', event)">Sales Agent Portal</button>
+            <button class="nav-btn" onclick="switchTab('mtd', event)">EGR MTD Dashboard</button>
+        </nav>
+
+        <div class="container">
+            <!-- 1. ENTRY LOBBY -->
+            <div id="entry" class="tab-content active">
+                <div class="card">
+                    <h2>Record New Sale</h2>
+                    <form id="salesForm" onsubmit="handleNewSale(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Agent Name</label>
+                                <select id="entryAgent" required>
+                                    <option value="">Select Agent</option>
+                                    <option value="Bernardo Plaza">Bernardo Plaza (Sir Bern / Bern Plaza)</option>
+                                    <option value="Ruthie Saavedra">Ruthie Saavedra (Mam Ruthie)</option>
+                                    <option value="Efren Galang">Efren Galang (Sir Efren)</option>
+                                    <option value="Maricar Guemo">Maricar Guemo (Maricar Dueño)</option>
+                                    <option value="Cheers Gonzales">Cheers Gonzales</option>
+                                    <option value="Joycebeth Mitra">Joycebeth Mitra</option>
+                                    <option value="Vivian Ocampo">Vivian Ocampo</option>
+                                    <option value="Charles Garcia">Charles Garcia</option>
+                                    <option value="Jayson Ravago">Jayson Ravago</option>
+                                    <option value="Jhosua Bautista">Jhosua Bautista</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Reservation Date</label>
+                                <input type="date" id="entryDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Primary Client Name</label>
+                                <input type="text" id="entryClient" placeholder="e.g., Juan Dela Cruz" required>
+                            </div>
+                            <div class="form-group">
+                                <label>People Included (Co-Buyers / Spouse / Remarks)</label>
+                                <input type="text" id="entryPeople" placeholder="e.g., Mikaella Pamintuan">
+                            </div>
+                            <div class="form-group">
+                                <label>Project / Developer</label>
+                                <select id="entryProject" onchange="handleProjectPriceChange('entryProject', 'entryTcp')" required>
+                                    <option value="">Select Project</option>
+                                    <option value="Pagsikat Place">Pagsikat Place</option>
+                                    <option value="Pagsibol Village">Pagsibol Village</option>
+                                    <option value="Xevera Mabalacat">Xevera Mabalacat</option>
+                                    <option value="Highview Haciendas">Highview Haciendas</option>
+                                    <option value="Ravenna Homes">Ravenna Homes</option>
+                                    <option value="Pasinaya Homes">Pasinaya Homes</option>
+                                    <option value="Fiesta Prime">Fiesta Prime</option>
+                                    <option value="Fiesta Porac 3">Fiesta Porac 3</option>
+                                    <option value="Fiesta Communities">Fiesta Communities</option>
+                                    <option value="Sameera Angeles">Sameera Angeles</option>
+                                    <option value="Hamana Homes">Hamana Homes</option>
+                                    <option value="Claremont">Claremont</option>
+                                    <option value="Kaya Homes">Kaya Homes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Unit / Block / Lot / Phase</label>
+                                <input type="text" id="entryUnit" placeholder="e.g., TH Royale / Blk 4 Lot 12">
+                            </div>
+                            <div class="form-group">
+                                <label>Total Contract Price (TCP)</label>
+                                <input type="number" id="entryTcp" placeholder="₱ Amount" required>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1.5rem; text-align: right;">
+                            <button type="submit" class="btn">Submit Transaction</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 2. AGENT PORTAL -->
+            <div id="agent" class="tab-content">
+                <div class="card">
+                    <h2>Agent Personal Sales Portal</h2>
+                    <div class="form-group" style="max-width: 350px; margin-bottom: 1.5rem;">
+                        <label>Select Agent Name</label>
+                        <select id="portalAgentSelect" onchange="renderAgentPortal()">
+                            <option value="">-- Choose Name --</option>
+                            <option value="Bernardo Plaza">Bernardo Plaza</option>
+                            <option value="Ruthie Saavedra">Ruthie Saavedra</option>
+                            <option value="Efren Galang">Efren Galang</option>
+                            <option value="Maricar Guemo">Maricar Guemo</option>
+                            <option value="Cheers Gonzales">Cheers Gonzales</option>
+                            <option value="Joycebeth Mitra">Joycebeth Mitra</option>
+                            <option value="Vivian Ocampo">Vivian Ocampo</option>
+                            <option value="Charles Garcia">Charles Garcia</option>
+                            <option value="Jayson Ravago">Jayson Ravago</option>
+                            <option value="Jhosua Bautista">Jhosua Bautista</option>
+                        </select>
+                    </div>
+
+                    <div id="agentPortalContent" style="display: none;">
+                        <div class="metric-badge" id="agentTotalSalesDisplay">Total Sales: ₱0.00</div>
+                        
+                        <h3>Your Transaction Records</h3>
+                        <div style="overflow-x: auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date Reserved</th>
+                                        <th>Client Name</th>
+                                        <th>People Included / Remarks</th>
+                                        <th>Project</th>
+                                        <th>Unit Details</th>
+                                        <th>TCP</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="agentSalesTableBody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. MTD DASHBOARD (CONFIDENTIAL) -->
+            <div id="mtd" class="tab-content">
+                <div class="card" id="mtdLockScreen">
+                    <h2>Executive Area Locked</h2>
+                    <p>Please enter the administrative password to access confidential MTD analytics.</p>
+                    <div class="form-group" style="max-width: 300px;">
+                        <input type="password" id="mtdPasswordInput" placeholder="Enter Password">
+                    </div>
+                    <button class="btn" style="margin-top: 1rem;" onclick="unlockMtd()">Unlock Dashboard</button>
                 </div>
 
-                <div id="agentPortalContent" style="display: none;">
-                    <div class="metric-badge" id="agentTotalSalesDisplay">Total Sales: ₱0.00</div>
-                    
-                    <h3>Your Transaction Records</h3>
-                    <div style="overflow-x: auto;">
+                <div id="mtdDashboardContent" style="display: none;">
+                    <div class="card">
+                        <h2>EGR Month-To-Date Executive Dashboard</h2>
+                        <div class="metric-badge" id="grandTotalDisplay">EGR Grand Total Sales: ₱0.00</div>
+                        
+                        <h3>Agent Performance Standings</h3>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Date Reserved</th>
-                                    <th>Client Name</th>
-                                    <th>People Included / Remarks</th>
-                                    <th>Project</th>
-                                    <th>Unit Details</th>
-                                    <th>TCP</th>
-                                    <th>Actions</th>
+                                    <th>Rank</th>
+                                    <th>Agent Name</th>
+                                    <th>Total Sales Volume</th>
                                 </tr>
                             </thead>
-                            <tbody id="agentSalesTableBody">
+                            <tbody id="leaderboardBody">
                                 <!-- Populated dynamically -->
                             </tbody>
                         </table>
@@ -365,38 +479,9 @@
             </div>
         </div>
 
-        <!-- 3. MTD DASHBOARD (CONFIDENTIAL) -->
-        <div id="mtd" class="tab-content">
-            <div class="card" id="mtdLockScreen">
-                <h2>Executive Area Locked</h2>
-                <p>Please enter the administrative password to access confidential MTD analytics.</p>
-                <div class="form-group" style="max-width: 300px;">
-                    <input type="password" id="mtdPasswordInput" placeholder="Enter Password">
-                </div>
-                <button class="btn" style="margin-top: 1rem;" onclick="unlockMtd()">Unlock Dashboard</button>
-            </div>
-
-            <div id="mtdDashboardContent" style="display: none;">
-                <div class="card">
-                    <h2>EGR Month-To-Date Executive Dashboard</h2>
-                    <div class="metric-badge" id="grandTotalDisplay">EGR Grand Total Sales: ₱0.00</div>
-                    
-                    <h3>Agent Performance Standings</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Agent Name</th>
-                                <th>Total Sales Volume</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leaderboardBody">
-                            <!-- Populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <footer>
+            E GALANG REALTY &copy; 2026 | Confidential Internal Sales Tracker
+        </footer>
     </div>
 
     <!-- EDIT TRANSACTION MODAL -->
@@ -466,12 +551,19 @@
         </div>
     </div>
 
-    <footer>
-        E GALANG REALTY &copy; 2026 | Confidential Internal Sales Tracker
-    </footer>
-
     <script>
-        // Loaded sales data from image records
+        // Password Protection for Main Site Access
+        function promptSitePassword() {
+            const password = prompt("Please enter the password to access EGR Sales Database:");
+            if (password === "EGR.2026") {
+                document.getElementById('welcomeOverlay').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else if (password !== null) {
+                alert("Incorrect Password! Access Denied.");
+            }
+        }
+
+        // Database Records
         let salesData = [
             // JANUARY
             { id: 1, agent: "Bernardo Plaza", date: "2026-01-12", client: "Joanna G. Arboleda", people: "None", project: "Fiesta Porac 3", unit: "-", tcp: 2656000 },
@@ -577,7 +669,7 @@
         }
 
         function handleProjectPriceChange(projectSelectId, tcpInputId) {
-            // Optional preset price logic can go here
+            // Optional price automation logic
         }
 
         function handleNewSale(e) {
